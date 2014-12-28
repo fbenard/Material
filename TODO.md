@@ -9,7 +9,6 @@ Abstract model
 **object**
 
 - id
-- 
 
 **object_event**
 
