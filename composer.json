@@ -28,12 +28,11 @@
 	{
 		"phpunit/phpunit": "4.4.x-dev"
 	},
-	"minimum-stability": "dev",
 	"autoload":
 	{
 		"psr-4":
 		{
-			"Material\\": ""
+			"fbenard\\Material\\": "Application/"
 		}
 	}
 }
