@@ -32,6 +32,17 @@ class Table
 	 *
 	 */
 
+	public function __get($attributeCode)
+	{
+		$attributeCode = '_' . $attributeCode;
+		return $this->$attributeCode;
+	}
+
+
+	/**
+	 *
+	 */
+
 	private function buildField($fieldCode, $fieldType)
 	{
 		// Build the field

@@ -2,7 +2,7 @@
 
 // Namespace
 
-namespace fbenard\Material\Services\Transformers;
+namespace fbenard\Material\Services\Transformers\MySql;
 
 
 /**
@@ -15,7 +15,7 @@ class FieldTransformer
 	 *
 	 */
 
-	public function transform_create()
+	public function transform_create($field)
 	{
 		//
 
@@ -24,7 +24,7 @@ class FieldTransformer
 
 		//
 
-		$result[] = '`' . $this->_code . '`';
+		$result[] = '`' . $field->code . '`';
 		
 
 		//
@@ -41,7 +41,7 @@ class FieldTransformer
 			'integer.tiny' => 'TINYINT',
 			'integer.big' => 'BIGINT',
 			'real' => 'REAL',
-			'string' => 'VARCHAR',
+			'string' => 'VARCHAR(255)',
 			'text' => 'TEXT',
 			'text.medium' => 'MEDIUMTEXT',
 			'text.tiny' => 'TINYTEXT',
@@ -53,29 +53,29 @@ class FieldTransformer
 		
 		//
 		
-		$typeCode = $this->_type;
+		$typeCode = $field->type;
 
-		if ($this->_isLong === true)
+		if ($field->isLong === true)
 		{
 			$typeCode .= '.long';
 		}
 
-		if ($this->_isMedium === true)
+		if ($field->isMedium === true)
 		{
 			$typeCode .= '.medium';
 		}
 
-		if ($this->_isShort === true)
+		if ($field->isShort === true)
 		{
 			$typeCode .= '.short';
 		}
 
-		if ($this->_isSmall === true)
+		if ($field->isSmall === true)
 		{
 			$typeCode .= '.small';
 		}
 
-		if ($this->_isTiny === true)
+		if ($field->isTiny === true)
 		{
 			$typeCode .= '.tiny';
 		}
@@ -89,7 +89,7 @@ class FieldTransformer
 
 		//
 
-		if ($this->_isUnsigned === true)
+		if ($field->isUnsigned === true)
 		{
 			$result[] = 'UNSIGNED';
 		}
@@ -97,18 +97,22 @@ class FieldTransformer
 
 		//
 
-		if ($this->_isNull === true)
+		if ($field->isNull === true)
 		{
 			$result[] = 'NULL';
+		}
+		else
+		{
+			$result[] = 'NOT NULL';
 		}
 
 
 		//
 
-		if (empty($this->_defaultValue) === false)
+		if (empty($field->defaultValue) === false)
 		{
 			$result[] = 'DEFAULT';
-			$result[] = '\'' .$this->_defaultValue . '\'';
+			$result[] = '\'' .$field->defaultValue . '\'';
 		}
 
 
@@ -116,8 +120,8 @@ class FieldTransformer
 
 		if
 		(
-			($this->_isIncremented === true) &&
-			($this->_isPrimaryKey === false)
+			($field->isIncremented === true) &&
+			($field->isPrimaryKey === false)
 		)
 		{
 			$result[] = 'AUTO_INCREMENT';
@@ -126,7 +130,7 @@ class FieldTransformer
 
 		//
 
-		if ($this->_isUnique === true)
+		if ($field->isUnique === true)
 		{
 			$result[] = 'UNIQUE';
 		}
@@ -134,7 +138,7 @@ class FieldTransformer
 
 		//
 
-		if ($this->_isPrimaryKey === true)
+		if ($field->isPrimaryKey === true)
 		{
 			$result[] = 'PRIMARY KEY';
 		}

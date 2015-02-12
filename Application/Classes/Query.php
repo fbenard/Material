@@ -21,28 +21,10 @@ class Query
 	 *
 	 */
 
-	public function create($tableCode, $callback)
+	public function __get($attributeCode)
 	{
-		// Connect to a connection
-
-		// Build the table
-
-		$table = new \fbenard\Material\Classes\Table($tableCode);
-		$callback($table);
-
-
-		//
-
-		$this->_table = $table;
-		$this->_type = __FUNCTION__;
-
-
-		// Execute the query
-
-		$this->execute();
-
-
-		return $table;
+		$attributeCode = '_' . $attributeCode;
+		return $this->$attributeCode;
 	}
 
 
@@ -50,11 +32,21 @@ class Query
 	 *
 	 */
 
-	public function delete($tableCode)
+	public function create($tableCode, $callbacks)
 	{
+		// Connect to a connection
+
 		// Build the table
 
 		$table = new \fbenard\Material\Classes\Table($tableCode);
+		
+
+		// Apply each callback
+
+		foreach ($callbacks as $callback)
+		{
+			$callback($table);
+		}
 
 
 		//
@@ -78,28 +70,23 @@ class Query
 
 	public function execute()
 	{
-		$rawQuery = $this->transform();
-		print_r($rawQuery);
-	}
+		//
+
+		$queryTransformer = new \fbenard\Material\Services\Transformers\MySql\QueryTransformer();
+		$rawQuery = $queryTransformer->transform($this);
+		\z\dlog($rawQuery);
 
 
-	/**
-	 *
-	 */
+		//
 
-	public function getType()
-	{
-		return $this->_type;
-	}
+		$connection = new \fbenard\Material\Classes\Connection();
 
+		
+		//
 
-	/**
-	 *
-	 */
-
-	public function getTable()
-	{
-		return $this->_table;
+		$databaseDriver = new \fbenard\Material\Services\Drivers\MySqlDriver();
+		$databaseDriver->connect($connection);
+		$databaseDriver->executeQuery($rawQuery);
 	}
 
 

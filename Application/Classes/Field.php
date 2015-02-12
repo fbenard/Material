@@ -45,6 +45,17 @@ class Field
 	 *
 	 */
 
+	public function __get($attributeCode)
+	{
+		$attributeCode = '_' . $attributeCode;
+		return $this->$attributeCode;
+	}
+
+
+	/**
+	 *
+	 */
+
 	public function big()
 	{
 		//
