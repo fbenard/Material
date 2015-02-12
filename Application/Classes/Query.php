@@ -72,28 +72,12 @@ class Query
 	{
 		//
 
-		$queryTransformer = new \fbenard\Material\Services\Transformers\MySql\QueryTransformer();
-		$rawQuery = $queryTransformer->transform($this);
-		\z\dlog($rawQuery);
-
-
-		//
-
 		$connection = new \fbenard\Material\Classes\Connection();
-
-		
-		//
-
-		$databaseDriver = new \fbenard\Material\Services\Drivers\MySqlDriver();
-		$databaseDriver->connect($connection);
-		$databaseDriver->executeQuery($rawQuery);
+		$connection->driver->executeQuery($this);
 	}
 
 
 	/*
-	public function reconnect($connectionCode)
-	public function disconnect($connectionCode)
-	public function connection($connectionCode)
 	DB::listen(function($sql, $bindings, $time)
 	DB::transaction(function()
 	DB::beginTransaction();

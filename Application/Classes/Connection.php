@@ -73,11 +73,22 @@ class Connection
 
 		//
 
-		$this->_driver = $connection['driver'];
 		$this->_host = $connection['host'];
 		$this->_login = $connection['login'];
 		$this->_password = $connection['password'];
 		$this->_name = $connection['name'];
+
+
+		//
+
+		$className = '\\fbenard\\Material\\Services\\Drivers\\' . $connection['driver'] . 'Driver';
+		
+		$this->_driver = new $className();
+
+
+		//
+
+		$this->_driver->connect($this);
 	}
 
 
