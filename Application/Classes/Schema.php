@@ -2,7 +2,7 @@
 
 // Namespace
 
-namespace Material\Classes;
+namespace fbenard\Material\Classes;
 
 
 /**

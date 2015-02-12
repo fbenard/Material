@@ -2,7 +2,7 @@
 
 // Namespace
 
-namespace Material\Classes;
+namespace fbenard\Material\Classes;
 
 
 /**
@@ -11,6 +11,7 @@ namespace Material\Classes;
 
 class Query
 {
+	/*
 	public function reconnect($connectionCode)
 	public function disconnect($connectionCode)
 	public function connection($connectionCode)
@@ -58,7 +59,7 @@ class Query
 	{
 	    var_dump($user->name);
 	}
-
+	*/
 }
 
 ?>
