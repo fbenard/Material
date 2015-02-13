@@ -50,7 +50,7 @@ class MySqlDriver
 		{
 			\z\e
 			(
-				'EXCEPTION_DB_CONNECT_FAILED',
+				EXCEPTION_DB_CONNECTION_FAILED,
 				[
 					'error' => $this->_handle->connect_error,
 					'connection' => $connection
@@ -116,7 +116,7 @@ class MySqlDriver
 		{
 			\z\e
 			(
-				'EXCEPTION_DB_QUERY_FAILED',
+				EXCEPTION_DB_QUERY_FAILED,
 				[
 					'error' => $this->_handle->error,
 					'query' => $query
