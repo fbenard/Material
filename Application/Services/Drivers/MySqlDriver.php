@@ -11,6 +11,11 @@ namespace fbenard\Material\Services\Drivers;
 
 class MySqlDriver
 {
+	// Traits
+
+	use \fbenard\Zero\Traits\Get;
+
+	
 	// Attributes
 
 	private $_connection = null;

@@ -12,6 +12,11 @@ namespace fbenard\Material\Classes;
 class AbstractModel
 {
 	/*
+	// Traits
+
+	use \fbenard\Zero\Traits\Get;
+
+	
 	// Attributes
 
 	private $_properties = null;
