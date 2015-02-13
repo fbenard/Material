@@ -1,3 +1,4 @@
 {
+	"factory/connection": "\\fbenard\\Material\\Services\\Factories\\ConnectionFactory",
 	"factory/query": "\\fbenard\\Material\\Services\\Factories\\QueryFactory"
 }
