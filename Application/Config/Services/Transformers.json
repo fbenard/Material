@@ -1,3 +1,4 @@
 {
-	"transformer/mysql/query/create": "\\fbenard\\Material\\Services\\Transformers\\MySql\\CreateQueryTransformer"
+	"transformer/mysql/query/create": "\\fbenard\\Material\\Services\\Transformers\\MySql\\CreateQueryTransformer",
+	"transformer/mysql/query/insert": "\\fbenard\\Material\\Services\\Transformers\\MySql\\InsertQueryTransformer"
 }
