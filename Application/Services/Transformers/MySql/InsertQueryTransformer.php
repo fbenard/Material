@@ -19,7 +19,18 @@ class InsertQueryTransformer
 	{
 		//
 
-		//$tableTransformer = new \fbenard\Material\Services\Transformers\MySql\CreateTableTransformer();
+		$columns = $query->columns;
+		$values = $query->values;
+
+		foreach ($columns as &$column)
+		{
+			$column = '`' . $column . '`';
+		}
+
+		foreach ($values as &$value)
+		{
+			$value = '\'' . $value . '\'';
+		}
 
 
 		//
@@ -29,9 +40,15 @@ class InsertQueryTransformer
 
 		//
 
-		$result[] = 'INSERT';
-		$result[] = 'INTO';
-		//$result[] = $tableTransformer->transform($query->table);
+		$result[] = 'INSERT INTO';
+		$result[] = $query->tableCode;
+		$result[] = '(';
+		$result[] = implode(', ', $columns);
+		$result[] = ')';
+		$result[] = 'VALUES';
+		$result[] = '(';
+		$result[] = implode(', ', $values);
+		$result[] = ')';
 
 
 		//

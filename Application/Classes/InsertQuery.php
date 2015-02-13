@@ -15,7 +15,7 @@ extends \fbenard\Material\Classes\AbstractQuery
 	// Attributes
 
 	protected $_columns = null;
-	protected $_into = null;
+	protected $_tableCode = null;
 	protected $_values = null;
 
 
@@ -35,6 +35,11 @@ extends \fbenard\Material\Classes\AbstractQuery
 
 	public function columns($columns)
 	{
+		// Store columns
+
+		$this->_columns = $columns;
+
+
 		return $this;
 	}
 
@@ -45,6 +50,11 @@ extends \fbenard\Material\Classes\AbstractQuery
 
 	public function into($tableCode)
 	{
+		// Store table code
+
+		$this->_tableCode = $tableCode;
+		
+
 		return $this;
 	}
 
@@ -55,6 +65,11 @@ extends \fbenard\Material\Classes\AbstractQuery
 
 	public function values($values)
 	{
+		// Store values
+
+		$this->_values = $values;
+		
+
 		return $this;
 	}
 }
