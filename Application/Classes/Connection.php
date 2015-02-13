@@ -23,6 +23,7 @@ class Connection
 	private $_login = null;
 	private $_name = null;
 	private $_password = null;
+	private $_system = null;
 
 
 	/**
@@ -73,11 +74,11 @@ class Connection
 		$connection = array_merge
 		(
 			[
-				'driver' => null,
 				'host' => null,
 				'login' => null,
+				'name' => null,
 				'password' => null,
-				'name' => null
+				'system' => null
 			],
 			$connection
 		);
@@ -89,13 +90,13 @@ class Connection
 		$this->_login = $connection['login'];
 		$this->_password = $connection['password'];
 		$this->_name = $connection['name'];
+		$this->_system = $connection['system'];
+
 
 
 		// Build the driver
 
-		$className = '\\fbenard\\Material\\Services\\Drivers\\' . $connection['driver'] . 'Driver';
-		
-		$this->_driver = new $className();
+		$this->_driver = \z\service('driver/db/' . $this->_system, true);
 
 
 		// Connect the driver
