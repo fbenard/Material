@@ -21,9 +21,9 @@ class QueryTransformer
 
 		$result = null;
 
-		if ($query->type === 'create')
+		if ($query->type === 'createTable')
 		{
-			$result = $this->transform_create($query);
+			$result = $this->transform_createTable($query);
 		}
 		else if ($query->type === 'delete')
 		{
@@ -55,7 +55,7 @@ class QueryTransformer
 	 *
 	 */
 
-	public function transform_create($query)
+	public function transform_createTable($query)
 	{
 		//
 
@@ -71,7 +71,7 @@ class QueryTransformer
 
 		$result[] = 'CREATE TABLE';
 		$result[] = 'IF NOT EXISTS';
-		$result[] = $tableTransformer->transform_create($query->table);
+		$result[] = $tableTransformer->transform_createTable($query->table);
 
 
 		//

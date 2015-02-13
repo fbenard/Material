@@ -15,7 +15,7 @@ class TableTransformer
 	 *
 	 */
 
-	public function transform_create($table)
+	public function transform_createTable($table)
 	{
 		//
 
@@ -28,7 +28,7 @@ class TableTransformer
 
 		foreach ($table->fields as $field)
 		{
-			$fields[] = $fieldTransformer->transform_create($field);
+			$fields[] = $fieldTransformer->transform_createTable($field);
 		}
 
 

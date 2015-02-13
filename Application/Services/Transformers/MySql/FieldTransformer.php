@@ -15,7 +15,7 @@ class FieldTransformer
 	 *
 	 */
 
-	public function transform_create($field)
+	public function transform_createTable($field)
 	{
 		//
 
