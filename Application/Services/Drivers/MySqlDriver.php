@@ -107,13 +107,7 @@ class MySqlDriver
 	{
 		//
 
-		$queryTransformer = new \fbenard\Material\Services\Transformers\MySql\QueryTransformer();
-		$rawQuery = $queryTransformer->transform($query);
-
-
-		//
-
-		$queryResult = $this->_handle->query($rawQuery);
+		$queryResult = $this->_handle->query($query);
 
 		
 		//
@@ -125,7 +119,7 @@ class MySqlDriver
 				'EXCEPTION_DB_QUERY_FAILED',
 				[
 					'error' => $this->_handle->error,
-					'query' => $rawQuery
+					'query' => $query
 				]
 			);
 		}

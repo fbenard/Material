@@ -9,17 +9,17 @@ namespace fbenard\Material\Services\Transformers\MySql;
  *
  */
 
-class TableTransformer
+class CreateTableTransformer
 {
 	/**
 	 *
 	 */
 
-	public function transform_createTable($table)
+	public function transform($table)
 	{
 		//
 
-		$fieldTransformer = new \fbenard\Material\Services\Transformers\MySql\FieldTransformer();
+		$fieldTransformer = new \fbenard\Material\Services\Transformers\MySql\CreateFieldTransformer();
 
 
 		//
@@ -28,7 +28,7 @@ class TableTransformer
 
 		foreach ($table->fields as $field)
 		{
-			$fields[] = $fieldTransformer->transform_createTable($field);
+			$fields[] = $fieldTransformer->transform($field);
 		}
 
 

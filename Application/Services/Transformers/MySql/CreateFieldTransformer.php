@@ -9,13 +9,13 @@ namespace fbenard\Material\Services\Transformers\MySql;
  *
  */
 
-class FieldTransformer
+class CreateFieldTransformer
 {
 	/**
 	 *
 	 */
 
-	public function transform_createTable($field)
+	public function transform($field)
 	{
 		//
 
