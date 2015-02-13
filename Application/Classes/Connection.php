@@ -26,7 +26,7 @@ class Connection
 
 	public function __construct($connectionCode = null)
 	{
-		//
+		// Grab connections
 
 		$connections = \z\pref('splio/goloboard/db/connections');
 
@@ -36,7 +36,7 @@ class Connection
 		}
 
 		
-		//
+		// Get a connection
 
 		if (empty($connectionCode) === true)
 		{
@@ -48,15 +48,22 @@ class Connection
 		}
 
 
-		//
+		// Check whether there's a connection
 
 		if (empty($connection) === true)
 		{
-			\z\e();
+			\z\e
+			(
+				'EXCEPTION_DB_CONNECTION_NOT_FOUND',
+				[
+					'connectionCode' => $connectionCode,
+					'connections' => $connections
+				]
+			);
 		}
 
 
-		//
+		// Make sure connection has the expected structure
 
 		$connection = array_merge
 		(
@@ -71,7 +78,7 @@ class Connection
 		);
 
 
-		//
+		// Store credentials
 
 		$this->_host = $connection['host'];
 		$this->_login = $connection['login'];
@@ -79,14 +86,14 @@ class Connection
 		$this->_name = $connection['name'];
 
 
-		//
+		// Build the driver
 
 		$className = '\\fbenard\\Material\\Services\\Drivers\\' . $connection['driver'] . 'Driver';
 		
 		$this->_driver = new $className();
 
 
-		//
+		// Connect the driver
 
 		$this->_driver->connect($this);
 	}
