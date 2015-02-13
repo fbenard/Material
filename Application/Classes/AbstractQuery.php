@@ -39,7 +39,7 @@ abstract class AbstractQuery
 	{
 		// Build the connection
 
-		$connection = new \fbenard\Material\Classes\Connection();
+		$connection = \z\service('manager/connection')->getConnection();
 
 
 		// Build the transformer
