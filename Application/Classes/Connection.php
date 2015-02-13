@@ -11,6 +11,11 @@ namespace fbenard\Material\Classes;
 
 class Connection
 {
+	// Traits
+
+	use \fbenard\Zero\Traits\Get;
+
+	
 	// Attributes
 
 	private $_driver = null;
@@ -96,17 +101,6 @@ class Connection
 		// Connect the driver
 
 		$this->_driver->connect($this);
-	}
-
-
-	/**
-	 *
-	 */
-
-	public function __get($attributeCode)
-	{
-		$attributeCode = '_' . $attributeCode;
-		return $this->$attributeCode;
 	}
 }
 

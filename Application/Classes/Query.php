@@ -11,21 +11,15 @@ namespace fbenard\Material\Classes;
 
 class Query
 {
+	// Traits
+
+	use \fbenard\Zero\Traits\Get;
+
+	
 	// Attributes
 
 	private $_table = null;
 	private $_type = null;
-
-
-	/**
-	 *
-	 */
-
-	public function __get($attributeCode)
-	{
-		$attributeCode = '_' . $attributeCode;
-		return $this->$attributeCode;
-	}
 
 
 	/**

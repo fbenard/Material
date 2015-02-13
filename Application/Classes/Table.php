@@ -11,6 +11,11 @@ namespace fbenard\Material\Classes;
 
 class Table
 {
+	// Traits
+
+	use \fbenard\Zero\Traits\Get;
+
+	
 	// Attributes
 
 	private $_code = null;
@@ -25,17 +30,6 @@ class Table
 	{
 		$this->_code = $tableCode;
 		$this->_fields = [];
-	}
-
-
-	/**
-	 *
-	 */
-
-	public function __get($attributeCode)
-	{
-		$attributeCode = '_' . $attributeCode;
-		return $this->$attributeCode;
 	}
 
 
