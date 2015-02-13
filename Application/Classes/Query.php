@@ -32,10 +32,8 @@ class Query
 	 *
 	 */
 
-	public function create($tableCode, $callbacks)
+	public function createTable($tableCode, $callbacks)
 	{
-		// Connect to a connection
-
 		// Build the table
 
 		$table = new \fbenard\Material\Classes\Table($tableCode);
