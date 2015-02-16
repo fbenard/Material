@@ -55,6 +55,16 @@ class QueryFactory
 	 *
 	 */
 
+	public function load()
+	{
+		return new \fbenard\Material\Classes\LoadQuery();
+	}
+
+
+	/**
+	 *
+	 */
+
 	public function select()
 	{
 		return new \fbenard\Material\Classes\SelectQuery();
