@@ -118,11 +118,7 @@ class CreateFieldTransformer
 
 		//
 
-		if
-		(
-			($field->isIncremented === true) &&
-			($field->isPrimaryKey === false)
-		)
+		if ($field->isIncremented === true)
 		{
 			$result[] = 'AUTO_INCREMENT';
 		}
