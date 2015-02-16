@@ -16,6 +16,7 @@ extends \fbenard\Material\Classes\AbstractQuery
 
 	protected $_columns = null;
 	protected $_tableCode = null;
+	protected $_updateOnDuplicate = null;
 	protected $_values = null;
 
 
@@ -53,6 +54,21 @@ extends \fbenard\Material\Classes\AbstractQuery
 		// Store table code
 
 		$this->_tableCode = $tableCode;
+		
+
+		return $this;
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function updateOnDuplicate()
+	{
+		// Update on duplicate key
+
+		$this->_updateOnDuplicate = true;
 		
 
 		return $this;

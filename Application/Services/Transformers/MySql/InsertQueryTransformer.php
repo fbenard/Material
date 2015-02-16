@@ -52,6 +52,22 @@ class InsertQueryTransformer
 
 
 		//
+
+		if ($query->updateOnDuplicate === true)
+		{
+			$result[] = 'ON DUPLICATE KEY UPDATE';
+			$columns_values = [];
+
+			foreach ($columns as $key => $column)
+			{
+				$columns_values[] = $column . ' = ' . $values[$key];
+			}
+
+			$result[] = implode(', ', $columns_values);
+		}
+
+
+		//
 		
 		$result = implode(' ', $result);
 
