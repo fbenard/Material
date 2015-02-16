@@ -57,6 +57,11 @@ class MySqlDriver
 				]
 			);
 		}
+
+
+		// Setup the handle
+
+		$this->_handle->options(MYSQLI_OPT_LOCAL_INFILE, true);
 	}
 
 
