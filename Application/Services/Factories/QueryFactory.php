@@ -69,16 +69,6 @@ class QueryFactory
 	{
 		return new \fbenard\Material\Classes\UpdateQuery();
 	}
-
-
-	/**
-	 *
-	 */
-
-	public function upsert()
-	{
-		return new \fbenard\Material\Classes\UpsertQuery();
-	}
 }
 
 ?>
