@@ -14,6 +14,8 @@ extends \fbenard\Material\Classes\AbstractQuery
 {
 	// Attributes
 
+	protected $_charset = null;
+	protected $_engine = null;
 	protected $_fields = null;
 	protected $_table = null;
 
@@ -25,6 +27,36 @@ extends \fbenard\Material\Classes\AbstractQuery
 	public function __construct()
 	{
 		parent::__construct('create');
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function charset($charset)
+	{
+		// Store the charset
+
+		$this->_charset = $charset;
+
+
+		return $this;
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function engine($engine)
+	{
+		// Store the engine
+
+		$this->_engine = $engine;
+
+
+		return $this;
 	}
 
 

@@ -31,6 +31,16 @@ class CreateQueryTransformer
 
 		$result[] = 'CREATE TABLE';
 		$result[] = $tableTransformer->transform($query->table);
+		
+		if (is_null($query->engine) === false)
+		{
+			$result[] = 'ENGINE=' . $query->engine;
+		}
+
+		if (is_null($query->charset) === false)
+		{
+			$result[] = 'DEFAULT CHARSET=' . $query->charset;
+		}
 
 
 		//
