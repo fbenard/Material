@@ -30,7 +30,6 @@ class CreateQueryTransformer
 		//
 
 		$result[] = 'CREATE TABLE';
-		$result[] = 'IF NOT EXISTS';
 		$result[] = $tableTransformer->transform($query->table);
 
 
