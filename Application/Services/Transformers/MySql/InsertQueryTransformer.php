@@ -41,7 +41,7 @@ class InsertQueryTransformer
 		//
 
 		$result[] = 'INSERT INTO';
-		$result[] = $query->tableCode;
+		$result[] = '`' . $query->tableCode . '`';
 		$result[] = '(';
 		$result[] = implode(', ', $columns);
 		$result[] = ')';
