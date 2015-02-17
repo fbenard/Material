@@ -99,20 +99,26 @@ class CreateFieldTransformer
 
 		if ($field->isNull === true)
 		{
+			//
+			
 			$result[] = 'NULL';
+
+
+			//
+
+			if (is_null($field->defaultValue) === true)
+			{
+				$result[] = 'DEFAULT NULL';
+			}
+			else if (empty($field->defaultValue) === false)
+			{
+				$result[] = 'DEFAULT';
+				$result[] = '\'' .$field->defaultValue . '\'';
+			}
 		}
 		else
 		{
 			$result[] = 'NOT NULL';
-		}
-
-
-		//
-
-		if (empty($field->defaultValue) === false)
-		{
-			$result[] = 'DEFAULT';
-			$result[] = '\'' .$field->defaultValue . '\'';
 		}
 
 
