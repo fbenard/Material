@@ -1,3 +1,5 @@
 {
-	"manager/connection": "\\fbenard\\Material\\Services\\Managers\\ConnectionManager"
+	"manager/connection": "\\fbenard\\Material\\Services\\Managers\\ConnectionManager",
+	"manager/model": "\\fbenard\\Material\\Services\\Managers\\ModelManager",
+	"manager/object": "\\fbenard\\Material\\Services\\Managers\\ObjectManager"
 }

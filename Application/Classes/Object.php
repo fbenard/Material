@@ -2,7 +2,7 @@
 
 // Namespace
 
-namespace Splio\Goloboard\Classes;
+namespace fbenard\Material\Classes;
 
 
 /**
@@ -11,38 +11,43 @@ namespace Splio\Goloboard\Classes;
 
 class Object
 {
+	// Traits
+
+	use \fbenard\Zero\Traits\Get;
+	use \fbenard\Zero\Traits\Set;
+
+
 	// Attributes
 
+	private $_modelCode = null;
 	private $_properties = null;
 
-	
-	/*
-	public function load($id);
-	public function delete();
-	public function count();
-	public function save();
-	public function destroy($ids);
-	*/
 
 	/**
 	 *
 	 */
 
-	public function __construct($modelCode)
+	public function __construct($modelCode, $objectProperties = null)
 	{
-		/*
-		Must build core properties
-		As well as properties defined in the model
-		*/
-	}
+		// Ensure properties is an array
+
+		if (is_array($objectProperties) === false)
+		{
+			$objectProperties = [];
+		}
 
 
-	/**
-	 *
-	 */
+		// Build properties
 
-	public function load($id)
-	{
+		foreach ($objectProperties as $propertyCode => $property)
+		{
+			$this->_properties[$propertyCode] = null;
+		}
+
+
+		// Store model code
+
+		$this->_modelCode = $modelCode;
 	}
 
 	
@@ -50,8 +55,9 @@ class Object
 	 *
 	 */
 
-	public function loadFromInitialObject($initialObject)
+	public function clear()
 	{
+		return \z\service('manager/object')->clearObject($this);
 	}
 
 
@@ -59,8 +65,69 @@ class Object
 	 *
 	 */
 
-	public function loadFromRawObject($rawObject)
+	public function delete()
 	{
+		return \z\service('manager/object')->deleteObject($this);
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function duplicate()
+	{
+		return \z\service('manager/object')->duplicateObject($this);
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function get($propertyCode)
+	{
+		// Check whether property exists
+
+		if (array_key_exists($propertyCode, $this->_properties) === false)
+		{
+			\z\e
+			(
+				EXCEPTION_OBJECT_PROPERTY_NOT_FOUND,
+				[
+					'propertyCode' => $propertyCode,
+					'properties' => $this->_properties
+				]
+			);
+		}
+
+
+		// Get the property value
+
+		$propertyValue = $this->_properties[$propertyCode];
+
+
+		return $propertyValue;
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function initialize($initialObject)
+	{
+		return \z\service('manager/object')->initializeObject($this, $initialObject);
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function load($objectId)
+	{
+		return \z\service('manager/object')->loadObject($this, $objectId);
 	}
 
 
@@ -70,6 +137,34 @@ class Object
 
 	public function save()
 	{
+		return \z\service('manager/object')->saveObject($this);
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function set($propertyCode, $propertyValue)
+	{
+		// Check whether property exists
+
+		if (array_key_exists($propertyCode, $this->_properties) === false)
+		{
+			\z\e
+			(
+				EXCEPTION_OBJECT_PROPERTY_NOT_FOUND,
+				[
+					'propertyCode' => $propertyCode,
+					'properties' => $this->_properties
+				]
+			);
+		}
+
+
+		// Store the property value
+
+		$this->_properties[$propertyCode] = $propertyValue;
 	}
 }
 
