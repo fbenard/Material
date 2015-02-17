@@ -2,7 +2,7 @@
 
 // Namespace
 
-namespace fbenard\Material\Classes;
+namespace fbenard\Material\Services\Queries;
 
 
 /**

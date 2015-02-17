@@ -54,7 +54,10 @@ abstract class AbstractQuery
 
 		// Execute the query
 
-		$connection->driver->executeQuery($query);
+		$result = $connection->driver->executeQuery($query);
+
+
+		return $result;
 	}
 }
 

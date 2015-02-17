@@ -15,69 +15,9 @@ class QueryFactory
 	 *
 	 */
 
-	public function create()
+	public function __call($methodCode, $methodArguments)
 	{
-		return new \fbenard\Material\Classes\CreateQuery();
-	}
-
-
-	/**
-	 *
-	 */
-
-	public function delete()
-	{
-		return new \fbenard\Material\Classes\DeleteQuery();
-	}
-
-
-	/**
-	 *
-	 */
-
-	public function drop()
-	{
-		return new \fbenard\Material\Classes\DropQuery();
-	}
-
-
-	/**
-	 *
-	 */
-
-	public function insert()
-	{
-		return new \fbenard\Material\Classes\InsertQuery();
-	}
-
-
-	/**
-	 *
-	 */
-
-	public function load()
-	{
-		return new \fbenard\Material\Classes\LoadQuery();
-	}
-
-
-	/**
-	 *
-	 */
-
-	public function select()
-	{
-		return new \fbenard\Material\Classes\SelectQuery();
-	}
-
-
-	/**
-	 *
-	 */
-
-	public function update()
-	{
-		return new \fbenard\Material\Classes\UpdateQuery();
+		return \z\service('query/' . $methodCode, true);
 	}
 }
 

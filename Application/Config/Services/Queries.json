@@ -1,0 +1,7 @@
+{
+	"query/create": "\\fbenard\\Material\\Services\\Queries\\CreateQuery",
+	"query/drop": "\\fbenard\\Material\\Services\\Queries\\DropQuery",
+	"query/insert": "\\fbenard\\Material\\Services\\Queries\\InsertQuery",
+	"query/load": "\\fbenard\\Material\\Services\\Queries\\LoadQuery",
+	"query/select": "\\fbenard\\Material\\Services\\Queries\\SelectQuery"
+}
