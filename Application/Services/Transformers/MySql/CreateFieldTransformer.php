@@ -83,10 +83,6 @@ class CreateFieldTransformer
 		$result[] = $types[$typeCode];
 
 		
-		/*
-		public $_isIndex = false;
-		*/
-
 		//
 
 		if ($field->isUnsigned === true)

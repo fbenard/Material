@@ -23,7 +23,6 @@ class Field
 	private $_defaultValue = null;
 	private $_isBig = false;
 	private $_isIncremented = false;
-	private $_isIndex = false;
 	private $_isLong = false;
 	private $_isMedium = false;
 	private $_isNull = true;
@@ -84,21 +83,6 @@ class Field
 		//
 
 		$this->_isIncremented = true;
-
-
-		return $this;
-	}
-
-
-	/**
-	 *
-	 */
-
-	public function index()
-	{
-		//
-
-		$this->_isIndex = true;
 
 
 		return $this;
