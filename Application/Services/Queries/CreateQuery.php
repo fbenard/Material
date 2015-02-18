@@ -24,16 +24,6 @@ extends \fbenard\Material\Classes\AbstractQuery
 	 *
 	 */
 
-	public function __construct()
-	{
-		parent::__construct('create');
-	}
-
-
-	/**
-	 *
-	 */
-
 	public function charset($charset)
 	{
 		// Store the charset

@@ -25,8 +25,23 @@ abstract class AbstractQuery
 	 *
 	 */
 
-	public function __construct($queryType)
+	public function __construct()
 	{
+		// Build the class name
+
+		$className = get_class($this);
+		$className = explode('\\', $className);
+		$className = array_pop($className);
+
+		
+		// Build the query type
+		
+		$queryType = str_replace('Query', null, $className);
+		$queryType = strtolower($queryType);
+
+
+		// Store the query type
+
 		$this->_type = $queryType;
 	}
 

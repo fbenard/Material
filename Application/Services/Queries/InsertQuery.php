@@ -24,16 +24,6 @@ extends \fbenard\Material\Classes\AbstractQuery
 	 *
 	 */
 
-	public function __construct()
-	{
-		parent::__construct('insert');
-	}
-
-
-	/**
-	 *
-	 */
-
 	public function columns($columns)
 	{
 		// Store columns

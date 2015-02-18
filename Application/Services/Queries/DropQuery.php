@@ -21,16 +21,6 @@ extends \fbenard\Material\Classes\AbstractQuery
 	 *
 	 */
 
-	public function __construct()
-	{
-		parent::__construct('drop');
-	}
-
-
-	/**
-	 *
-	 */
-
 	public function table($tableCode)
 	{
 		// Store the table code

@@ -23,16 +23,6 @@ extends \fbenard\Material\Classes\AbstractQuery
 	 *
 	 */
 
-	public function __construct()
-	{
-		parent::__construct('load');
-	}
-
-
-	/**
-	 *
-	 */
-
 	public function infile($pathToFile)
 	{
 		// Store path to file
