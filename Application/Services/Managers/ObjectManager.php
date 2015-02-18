@@ -42,13 +42,13 @@ class ObjectManager
 	 *
 	 */
 
-	public function initializeObject(&$object, $initialObject)
+	public function importObject(&$object, $input)
 	{
 		foreach ($object->properties as $propertyCode => $property)
 		{
-			if (array_key_exists($propertyCode, $initialObject) === true)
+			if (array_key_exists($propertyCode, $input) === true)
 			{
-				$object->set($propertyCode, $initialObject[$propertyCode]);
+				$object->set($propertyCode, $input[$propertyCode]);
 			}
 		}
 	}
@@ -62,7 +62,7 @@ class ObjectManager
 	{
 		//
 
-		$initialObject = \z\service('factory/query')
+		$input = \z\service('factory/query')
 		->select()
 		->from($object->modelCode)
 		->where('id', '=', $objectId);
@@ -70,7 +70,7 @@ class ObjectManager
 
 		//
 
-		$this->initializeObject($object, $initialObject);
+		$this->import($object, $input);
 	}
 
 

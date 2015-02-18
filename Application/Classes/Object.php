@@ -85,6 +85,16 @@ class Object
 	 *
 	 */
 
+	public function export($input)
+	{
+		return \z\service('manager/object')->exportObject($this);
+	}
+
+
+	/**
+	 *
+	 */
+
 	public function get($propertyCode)
 	{
 		// Check whether property exists
@@ -115,9 +125,9 @@ class Object
 	 *
 	 */
 
-	public function initialize($initialObject)
+	public function import($input)
 	{
-		return \z\service('manager/object')->initializeObject($this, $initialObject);
+		return \z\service('manager/object')->importObject($this, $input);
 	}
 
 
@@ -138,6 +148,16 @@ class Object
 	public function save()
 	{
 		return \z\service('manager/object')->saveObject($this);
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function search()
+	{
+		return \z\service('manager/object')->searchObject($this);
 	}
 
 
