@@ -106,9 +106,20 @@ class ObjectManager
 
 	public function searchObject(&$object, $query = null, $page = null, $limit = null)
 	{
-		//
+		// Compute size of collection
+
+		$count = \z\service('factory/query')
+		->select()
+		->count('id', 'nb_objects')
+		->from($object->modelCode)
+		->execute();
+
+		$size = $count[0]['nb_objects'];
 		
-		$inputs = \z\service('factory/query')
+
+		// Compute data
+		
+		$data = \z\service('factory/query')
 		->select()
 		->from($object->modelCode)
 		->offset($page * \z\pref('splio/goloboard/documents/limit'))
@@ -120,8 +131,8 @@ class ObjectManager
 
 		$result = array
 		(
-			'data' => $inputs,
-			'size' => count($inputs)
+			'data' => $data,
+			'size' => $size
 		);
 
 
