@@ -26,6 +26,14 @@ class ObjectManager
 
 	public function deleteObject(&$object)
 	{
+		//
+		
+		$query = new \fbenard\Material\Classes\Query();
+
+		$query
+		->delete()
+		->from($this->_nameSingular)
+		->where('id', '=', $this->getId());
 	}
 
 	
@@ -89,6 +97,31 @@ class ObjectManager
 		->values(array_values($object->properties))
 		->updateOnDuplicate()
 		->execute();
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function searchObject(&$object)
+	{
+		$query = new \fbenard\Material\Classes\Query();
+
+		$rawDocuments = $query
+		->select()
+		->from($this->_nameSingular)
+		->offset($offset)
+		->limit(\z\pref('splio/goloboard/documents/limit'));
+
+
+		// Build the result
+
+		$result = array
+		(
+			'data' => [],
+			'size' => count($ids)
+		);
 	}
 }
 
