@@ -20,6 +20,8 @@ class Table
 
 	private $_code = null;
 	private $_fields = null;
+	private $_primaryKey = null;
+	private $_uniqueKeys = null;
 	
 
 	/**
@@ -30,6 +32,7 @@ class Table
 	{
 		$this->_code = $tableCode;
 		$this->_fields = [];
+		$this->_uniqueKeys = [];
 	}
 
 
@@ -160,6 +163,16 @@ class Table
 	public function timestamp($fieldCode)
 	{
 		return $this->buildField($fieldCode, __FUNCTION__);
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function uniqueKey($keyCode, $fields)
+	{
+		$this->_uniqueKeys[$keyCode] = $fields;
 	}
 }
 

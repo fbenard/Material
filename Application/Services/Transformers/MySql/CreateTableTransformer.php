@@ -36,6 +36,21 @@ class CreateTableTransformer
 			$fields[] = 'PRIMARY KEY (`' . $table->primaryKey . '`)';
 		}
 
+		foreach ($table->uniqueKeys as $keyCode => $key)
+		{
+			//
+
+			foreach ($key as &$fieldCode)
+			{
+				$fieldCode = '`' . $fieldCode . '`';
+			}
+
+			
+			//
+			
+			$fields[] = 'UNIQUE KEY `' . $keyCode . '` (' . implode(', ', $key) . ')';
+		}
+
 
 		//
 
