@@ -15,6 +15,7 @@ extends \fbenard\Material\Classes\AbstractQuery
 	// Attributes
 
 	protected $_counts = null;
+	protected $_distincts = null;
 	protected $_fields = null;
 	protected $_from = null;
 	protected $_limit = null;
@@ -36,6 +37,7 @@ extends \fbenard\Material\Classes\AbstractQuery
 		// Build attributes
 
 		$this->_counts = [];
+		$this->_distincts = [];
 		$this->_fields = [];
 	}
 
@@ -44,11 +46,26 @@ extends \fbenard\Material\Classes\AbstractQuery
 	 *
 	 */
 
-	public function count($fieldCode, $alias)
+	public function count($fieldCode, $alias = null)
 	{
 		// Store field
 
 		$this->_counts[$fieldCode] = $alias;
+		
+
+		return $this;
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function distinct($fieldCode, $alias = null)
+	{
+		// Store field
+
+		$this->_distincts[$fieldCode] = $alias;
 		
 
 		return $this;

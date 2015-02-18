@@ -23,11 +23,11 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 		$result =
 		[
 			'SELECT',
-			$this->transformFields($query),
+			$this->transformFields($query, $connection),
 			'FROM',
 			'`' . $query->from . '`',
-			$this->transformLimit($query),
-			$this->transformOffset($query),
+			$this->transformLimit($query, $connection),
+			$this->transformOffset($query, $connection),
 		];
 		
 
@@ -68,6 +68,16 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 		foreach ($counts as $fieldCode => $alias)
 		{
 			$result[] = 'COUNT(`' . $fieldCode . '`) AS ' . $alias;
+		}
+
+		
+		//
+
+		$distincts = $query->distincts;
+
+		foreach ($distincts as $fieldCode => $alias)
+		{
+			$result[] = 'DISTINCT(`' . $fieldCode . '`) AS ' . $alias;
 		}
 
 		
