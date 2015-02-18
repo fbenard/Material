@@ -14,6 +14,8 @@ extends \fbenard\Material\Classes\AbstractQuery
 {
 	// Attributes
 
+	protected $_counts = null;
+	protected $_fields = null;
 	protected $_from = null;
 	protected $_limit = null;
 	protected $_offset = null;
@@ -24,9 +26,32 @@ extends \fbenard\Material\Classes\AbstractQuery
 	 *
 	 */
 
-	public function __construct()
+	public function __construct($fields = null)
 	{
+		// Call parent constructor
+
 		parent::__construct();
+
+
+		// Build attributes
+
+		$this->_counts = [];
+		$this->_fields = [];
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function count($fieldCode, $alias)
+	{
+		// Store field
+
+		$this->_counts[$fieldCode] = $alias;
+		
+
+		return $this;
 	}
 
 
