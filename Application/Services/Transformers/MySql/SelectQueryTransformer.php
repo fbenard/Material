@@ -27,7 +27,19 @@ class SelectQueryTransformer
 		$result[] = 'SELECT';
 		$result[] = '*';
 		$result[] = 'FROM';
-		$result[] = $query->from;
+		$result[] = '`' . $query->from . '`';
+		
+		if (is_null($query->limit) === false)
+		{		
+			$result[] = 'LIMIT';
+			$result[] = $query->limit;
+		}
+
+		if (is_null($query->offset) === false)
+		{		
+			$result[] = 'OFFSET';
+			$result[] = $query->offset;
+		}
 
 
 		//
