@@ -49,7 +49,7 @@ abstract class AbstractQuery
 
 		// Transform the query
 
-		$query = $queryTransformer->transform($this);
+		$query = $queryTransformer->transform($this, $connection);
 
 
 		// Execute the query

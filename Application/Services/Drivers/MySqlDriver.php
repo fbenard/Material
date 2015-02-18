@@ -137,6 +137,21 @@ class MySqlDriver
 			return $queryResult->fetch_all(MYSQLI_ASSOC);
 		}
 	}
+
+
+	/**
+	 *
+	 */
+
+	public function secureString($string)
+	{
+		//
+
+		$result = $this->_handle->real_escape_string($string);
+
+
+		return $result;
+	}
 }
 
 ?>

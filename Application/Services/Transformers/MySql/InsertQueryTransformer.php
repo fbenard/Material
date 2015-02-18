@@ -15,7 +15,7 @@ class InsertQueryTransformer
 	 *
 	 */
 
-	public function transform($query)
+	public function transform($query, $connection)
 	{
 		//
 
@@ -29,7 +29,7 @@ class InsertQueryTransformer
 
 		foreach ($values as &$value)
 		{
-			$value = '\'' . $value . '\'';
+			$value = '\'' . $connection->driver->secureString($value) . '\'';
 		}
 
 
