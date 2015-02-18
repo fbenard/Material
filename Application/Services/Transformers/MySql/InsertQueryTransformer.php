@@ -10,6 +10,7 @@ namespace fbenard\Material\Services\Transformers\MySql;
  */
 
 class InsertQueryTransformer
+extends \fbenard\Material\Classes\AbstractQueryTransformer
 {
 	/**
 	 *

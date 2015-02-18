@@ -1,5 +1,7 @@
 {
 	"transformer/mysql/query/create": "\\fbenard\\Material\\Services\\Transformers\\MySql\\CreateQueryTransformer",
+	"transformer/mysql/query/create/field": "\\fbenard\\Material\\Services\\Transformers\\MySql\\CreateFieldTransformer",
+	"transformer/mysql/query/create/table": "\\fbenard\\Material\\Services\\Transformers\\MySql\\CreateTableTransformer",
 	"transformer/mysql/query/drop": "\\fbenard\\Material\\Services\\Transformers\\MySql\\DropQueryTransformer",
 	"transformer/mysql/query/insert": "\\fbenard\\Material\\Services\\Transformers\\MySql\\InsertQueryTransformer",
 	"transformer/mysql/query/load": "\\fbenard\\Material\\Services\\Transformers\\MySql\\LoadQueryTransformer",

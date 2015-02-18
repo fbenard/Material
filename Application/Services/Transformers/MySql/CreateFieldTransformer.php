@@ -10,12 +10,13 @@ namespace fbenard\Material\Services\Transformers\MySql;
  */
 
 class CreateFieldTransformer
+extends \fbenard\Material\Classes\AbstractQueryTransformer
 {
 	/**
 	 *
 	 */
 
-	public function transform($field)
+	public function transform($field, $connection)
 	{
 		//
 
@@ -132,11 +133,11 @@ class CreateFieldTransformer
 		{
 			$result[] = 'UNIQUE';
 		}
-
-
-		//
 		
-		$result = implode(' ', $result);
+
+		// Build the result
+		
+		$result = $this->buildResult($result);
 
 
 		return $result;

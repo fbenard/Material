@@ -10,31 +10,113 @@ namespace fbenard\Material\Services\Transformers\MySql;
  */
 
 class CreateTableTransformer
+extends \fbenard\Material\Classes\AbstractQueryTransformer
 {
 	/**
 	 *
 	 */
 
-	public function transform($table)
+	public function transform($table, $connection)
+	{
+		// Prepare the result
+
+		$result =
+		[
+			'`' . $table->code . '`',
+			'(',
+			$this->transformInstructions($table, $connection),
+			')'
+		];
+		
+
+		// Build the result
+		
+		$result = $this->buildResult($result);
+
+
+		return $result;
+	}
+
+
+	/**
+	 *
+	 */
+
+	private function transformFields($table, $connection)
 	{
 		//
 
-		$fieldTransformer = new \fbenard\Material\Services\Transformers\MySql\CreateFieldTransformer();
-
-
-		//
-
-		$fields = [];
+		$result = [];
 
 		foreach ($table->fields as $field)
 		{
-			$fields[] = $fieldTransformer->transform($field);
+			$result[] = \z\service('transformer/mysql/query/create/field')->transform($field, $connection);
 		}
 
-		if (is_null($table->primaryKey) === false)
-		{
-			$fields[] = 'PRIMARY KEY (`' . $table->primaryKey . '`)';
+
+		return $result;
+	}
+
+
+	/**
+	 *
+	 */
+
+	private function transformInstructions($table, $connection)
+	{
+		// Prepare the result
+
+		$result = array_merge
+		(
+			$this->transformFields($table, $connection),
+			$this->transformPrimaryKey($table, $connection),
+			$this->transformUniqueKeys($table, $connection)
+		);
+
+
+		// Build the result
+		
+		$result = $this->buildResult($result, ', ');
+
+
+		return $result;
+	}
+
+
+	/**
+	 *
+	 */
+
+	private function transformPrimaryKey($table, $connection)
+	{
+		// Prepare the result
+
+		$result = [];
+
+
+		// Add the primary key
+
+		$primaryKey = $table->primaryKey;
+
+		if (empty($primaryKey) === false)
+		{		
+			$result[] = 'PRIMARY KEY (`' . $primaryKey . '`)';
 		}
+
+
+		return $result;
+	}
+
+
+	/**
+	 *
+	 */
+
+	private function transformUniqueKeys($table, $connection)
+	{
+		//
+
+		$result = [];
 
 		foreach ($table->uniqueKeys as $keyCode => $key)
 		{
@@ -48,26 +130,8 @@ class CreateTableTransformer
 			
 			//
 			
-			$fields[] = 'UNIQUE KEY `' . $keyCode . '` (' . implode(', ', $key) . ')';
+			$result[] = 'UNIQUE KEY `' . $keyCode . '` (' . implode(', ', $key) . ')';
 		}
-
-
-		//
-
-		$result = [];
-
-		
-		//
-
-		$result[] = '`' . $table->code . '`';
-		$result[] = '(';
-		$result[] = implode(', ', $fields);
-		$result[] = ')';
-
-
-		//
-		
-		$result = implode(' ', $result);
 
 
 		return $result;

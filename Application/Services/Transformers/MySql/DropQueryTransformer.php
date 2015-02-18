@@ -10,28 +10,27 @@ namespace fbenard\Material\Services\Transformers\MySql;
  */
 
 class DropQueryTransformer
+extends \fbenard\Material\Classes\AbstractQueryTransformer
 {
 	/**
 	 *
 	 */
 
-	public function transform($query)
+	public function transform($query, $connection)
 	{
-		//
+		// Prepare the result
 
-		$result = [];
-
-
-		//
-
-		$result[] = 'DROP TABLE';
-		$result[] = 'IF EXISTS';
-		$result[] = '`' . $query->tableCode . '`';
-
-
-		//
+		$result =
+		[
+			'DROP TABLE',
+			'IF EXISTS',
+			'`' . $query->tableCode . '`'
+		];
 		
-		$result = implode(' ', $result);
+
+		// Build the result
+		
+		$result = $this->buildResult($result);
 
 
 		return $result;

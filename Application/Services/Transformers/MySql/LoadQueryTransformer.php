@@ -10,20 +10,17 @@ namespace fbenard\Material\Services\Transformers\MySql;
  */
 
 class LoadQueryTransformer
+extends \fbenard\Material\Classes\AbstractQueryTransformer
 {
 	/**
 	 *
 	 */
 
-	public function transform($query)
+	public function transform($query, $connector)
 	{
-		//
+		// Prepare result
 
 		$result = [];
-
-
-		//
-
 		$result[] = 'LOAD DATA';
 
 		if ($query->isLocal === true)
@@ -46,9 +43,9 @@ class LoadQueryTransformer
 		$result[] = 'IGNORE 1 LINES';
 
 
-		//
+		// Build the result
 		
-		$result = implode(' ', $result);
+		$result = $this->buildResult($result);
 
 
 		return $result;

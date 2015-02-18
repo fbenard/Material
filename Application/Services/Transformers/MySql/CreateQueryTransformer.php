@@ -10,42 +10,89 @@ namespace fbenard\Material\Services\Transformers\MySql;
  */
 
 class CreateQueryTransformer
+extends \fbenard\Material\Classes\AbstractQueryTransformer
 {
 	/**
 	 *
 	 */
 
-	public function transform($query)
+	public function transform($query, $connector)
 	{
-		//
+		// Prepare the result
 
-		$tableTransformer = new \fbenard\Material\Services\Transformers\MySql\CreateTableTransformer();
+		$result =
+		[
+			'CREATE',
+			'TABLE',
+			\z\service('transformer/mysql/query/create/table')->transform($query->table, $connector),
+			$this->transformEngine($query, $connector),
+			$this->transformCharset($query, $connector)
+		];
+		
+
+		// Build the result
+		
+		$result = $this->buildResult($result);
 
 
-		//
+		return $result;
+	}
+
+
+	/**
+	 *
+	 */
+
+	private function transformCharset($query, $connection)
+	{
+		// Prepare the result
 
 		$result = [];
 
 
-		//
+		// Add the charset
 
-		$result[] = 'CREATE TABLE';
-		$result[] = $tableTransformer->transform($query->table);
-		
-		if (is_null($query->engine) === false)
-		{
-			$result[] = 'ENGINE=' . $query->engine;
+		$charset = $query->charset;
+
+		if (empty($charset) === false)
+		{		
+			$result[] = 'DEFAULT CHARSET=' . $charset;
 		}
-
-		if (is_null($query->charset) === false)
-		{
-			$result[] = 'DEFAULT CHARSET=' . $query->charset;
-		}
-
-
-		//
 		
-		$result = implode(' ', $result);
+
+		// Build the result
+		
+		$result = $this->buildResult($result);
+
+
+		return $result;
+	}
+
+
+	/**
+	 *
+	 */
+
+	private function transformEngine($query, $connection)
+	{
+		// Prepare the result
+
+		$result = [];
+
+
+		// Add the engine
+
+		$engine = $query->engine;
+
+		if (empty($engine) === false)
+		{		
+			$result[] = 'ENGINE=' . $engine;
+		}
+		
+
+		// Build the result
+		
+		$result = $this->buildResult($result);
 
 
 		return $result;
