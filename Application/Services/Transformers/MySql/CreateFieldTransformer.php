@@ -139,14 +139,6 @@ class CreateFieldTransformer
 
 
 		//
-
-		if ($field->isPrimaryKey === true)
-		{
-			$result[] = 'PRIMARY KEY';
-		}
-
-
-		//
 		
 		$result = implode(' ', $result);
 

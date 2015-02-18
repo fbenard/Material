@@ -31,6 +31,11 @@ class CreateTableTransformer
 			$fields[] = $fieldTransformer->transform($field);
 		}
 
+		if (is_null($table->primaryKey) === false)
+		{
+			$fields[] = 'PRIMARY KEY (`' . $table->primaryKey . '`)';
+		}
+
 
 		//
 

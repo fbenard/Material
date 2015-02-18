@@ -27,7 +27,6 @@ class Field
 	private $_isLong = false;
 	private $_isMedium = false;
 	private $_isNull = true;
-	private $_isPrimaryKey = false;
 	private $_isShort = false;
 	private $_isSmall = false;
 	private $_isTiny = false;
@@ -144,23 +143,6 @@ class Field
 	{
 		//
 
-		$this->_isNull = false;
-
-
-		return $this;
-	}
-
-
-	/**
-	 *
-	 */
-
-	public function primaryKey()
-	{
-		//
-
-		$this->_isIncremented = true;
-		$this->_isPrimaryKey = true;
 		$this->_isNull = false;
 
 

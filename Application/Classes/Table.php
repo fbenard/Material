@@ -107,6 +107,16 @@ class Table
 	 *
 	 */
 
+	public function primaryKey($fieldCode)
+	{
+		$this->_primaryKey = $fieldCode;
+	}
+
+
+	/**
+	 *
+	 */
+
 	public function real($fieldCode)
 	{
 		return $this->buildField($fieldCode, __FUNCTION__);
