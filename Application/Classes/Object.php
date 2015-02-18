@@ -155,9 +155,9 @@ class Object
 	 *
 	 */
 
-	public function search()
+	public function search($query = null, $page = null, $limit = null)
 	{
-		return \z\service('manager/object')->searchObject($this);
+		return \z\service('manager/object')->searchObject($this, $query, $page, $limit);
 	}
 
 

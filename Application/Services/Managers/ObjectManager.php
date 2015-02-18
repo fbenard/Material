@@ -104,24 +104,28 @@ class ObjectManager
 	 *
 	 */
 
-	public function searchObject(&$object)
+	public function searchObject(&$object, $query = null, $page = null, $limit = null)
 	{
-		$query = new \fbenard\Material\Classes\Query();
-
-		$rawDocuments = $query
+		//
+		
+		$inputs = \z\service('factory/query')
 		->select()
-		->from($this->_nameSingular)
-		->offset($offset)
-		->limit(\z\pref('splio/goloboard/documents/limit'));
+		->from($object->modelCode)
+		->offset($page * \z\pref('splio/goloboard/documents/limit'))
+		->limit(\z\pref('splio/goloboard/documents/limit'))
+		->execute();
 
 
 		// Build the result
 
 		$result = array
 		(
-			'data' => [],
-			'size' => count($ids)
+			'data' => $inputs,
+			'size' => count($inputs)
 		);
+
+
+		return $result;
 	}
 }
 
