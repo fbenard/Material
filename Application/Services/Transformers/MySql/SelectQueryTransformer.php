@@ -34,6 +34,7 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 		// Build the result
 		
 		$result = $this->buildResult($result);
+		print $result;
 
 
 		return $result;
@@ -49,6 +50,16 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 		//
 
 		$result = [];
+
+		
+		//
+
+		$distincts = $query->distincts;
+
+		foreach ($distincts as $fieldCode)
+		{
+			$result[] = 'DISTINCT `' . $fieldCode . '`';
+		}
 
 
 		//
@@ -68,16 +79,6 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 		foreach ($counts as $fieldCode => $alias)
 		{
 			$result[] = 'COUNT(`' . $fieldCode . '`) AS ' . $alias;
-		}
-
-		
-		//
-
-		$distincts = $query->distincts;
-
-		foreach ($distincts as $fieldCode => $alias)
-		{
-			$result[] = 'DISTINCT(`' . $fieldCode . '`) AS ' . $alias;
 		}
 
 		

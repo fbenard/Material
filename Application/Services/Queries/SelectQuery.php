@@ -27,7 +27,7 @@ extends \fbenard\Material\Classes\AbstractQuery
 	 *
 	 */
 
-	public function __construct($fields = null)
+	public function __construct()
 	{
 		// Call parent constructor
 
@@ -65,7 +65,22 @@ extends \fbenard\Material\Classes\AbstractQuery
 	{
 		// Store field
 
-		$this->_distincts[$fieldCode] = $alias;
+		$this->_distincts[] = $fieldCode;
+		
+
+		return $this;
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function fields($fields)
+	{
+		// Store fields
+
+		$this->_fields = $fields;
 		
 
 		return $this;
