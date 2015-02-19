@@ -15,9 +15,10 @@ extends \fbenard\Material\Classes\AbstractQuery
 	// Attributes
 
 	protected $_counts = null;
-	protected $_distincts = null;
 	protected $_fields = null;
 	protected $_from = null;
+	protected $_groupBy = null;
+	protected $_isDistinct = null;
 	protected $_limit = null;
 	protected $_offset = null;
 	protected $_where = null;
@@ -37,8 +38,9 @@ extends \fbenard\Material\Classes\AbstractQuery
 		// Build attributes
 
 		$this->_counts = [];
-		$this->_distincts = [];
 		$this->_fields = [];
+		$this->_groupBy = [];
+		$this->_orderBy = [];
 	}
 
 
@@ -61,11 +63,11 @@ extends \fbenard\Material\Classes\AbstractQuery
 	 *
 	 */
 
-	public function distinct($fieldCode, $alias = null)
+	public function distinct()
 	{
 		// Store field
 
-		$this->_distincts[] = $fieldCode;
+		$this->_isDistinct = true;
 		
 
 		return $this;
@@ -106,6 +108,21 @@ extends \fbenard\Material\Classes\AbstractQuery
 	 *
 	 */
 
+	public function groupBy($groupBy)
+	{
+		// Store groupBy
+
+		$this->_groupBy = $groupBy;
+		
+
+		return $this;
+	}
+
+
+	/**
+	 *
+	 */
+
 	public function limit($limit)
 	{
 		// Store limit
@@ -126,6 +143,21 @@ extends \fbenard\Material\Classes\AbstractQuery
 		// Store offset
 
 		$this->_offset = $offset;
+		
+
+		return $this;
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function orderBy($orderBy)
+	{
+		// Store orderBy
+
+		$this->_orderBy = $orderBy;
 		
 
 		return $this;

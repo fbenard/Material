@@ -23,9 +23,12 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 		$result =
 		[
 			'SELECT',
+			$this->transformDistinct($query, $connection),
 			$this->transformFields($query, $connection),
 			'FROM',
 			'`' . $query->from . '`',
+			$this->transformGroupBy($query, $connection),
+			$this->transformOrderBy($query, $connection),
 			$this->transformLimit($query, $connection),
 			$this->transformOffset($query, $connection),
 		];
@@ -34,7 +37,34 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 		// Build the result
 		
 		$result = $this->buildResult($result);
-		print $result;
+
+
+		return $result;
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function transformDistinct($query, $connection)
+	{
+		//
+
+		$result = [];
+
+		
+		//
+
+		if ($query->isDistinct === true)
+		{
+			$result[] = 'DISTINCT';
+		}
+
+
+		// Build the result
+		
+		$result = $this->buildResult($result);
 
 
 		return $result;
@@ -54,21 +84,11 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 		
 		//
 
-		$distincts = $query->distincts;
-
-		foreach ($distincts as $fieldCode)
-		{
-			$result[] = 'DISTINCT `' . $fieldCode . '`';
-		}
-
-
-		//
-
 		$fields = $query->fields;
 
 		foreach ($fields as $fieldCode)
 		{
-			$result[] = $fieldCode;
+			$result[] = '`' . $fieldCode . '`';
 		}
 
 		
@@ -93,6 +113,44 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 		// Build the result
 		
 		$result = $this->buildResult($result, ', ');
+
+
+		return $result;
+	}
+
+
+	/**
+	 *
+	 */
+
+	private function transformGroupBy($query, $connection)
+	{
+		//
+
+		$result = [];
+
+		
+		//
+
+		$groupBy = $query->groupBy;
+
+		if (empty($groupBy) === false)
+		{
+			$result[] = 'GROUP BY';
+			$fields = [];
+
+			foreach ($groupBy as $fieldCode)
+			{
+				$fields[] = '`' . $fieldCode . '`';
+			}
+
+			$result[] = implode(', ', $fields);
+		}
+		
+
+		// Build the result
+		
+		$result = $this->buildResult($result, ' ');
 
 
 		return $result;
@@ -155,6 +213,44 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 		// Build the result
 		
 		$result = $this->buildResult($result);
+
+
+		return $result;
+	}
+
+
+	/**
+	 *
+	 */
+
+	private function transformOrderBy($query, $connection)
+	{
+		//
+
+		$result = [];
+
+		
+		//
+
+		$orderBy = $query->orderBy;
+
+		if (empty($orderBy) === false)
+		{
+			$result[] = 'ORDER BY';
+			$fields = [];
+
+			foreach ($orderBy as $fieldCode => $direction)
+			{
+				$fields[] = '`' . $fieldCode . '` ' . strtoupper($direction);
+			}
+
+			$result[] = implode(', ', $fields);
+		}
+		
+
+		// Build the result
+		
+		$result = $this->buildResult($result, ' ');
 
 
 		return $result;
