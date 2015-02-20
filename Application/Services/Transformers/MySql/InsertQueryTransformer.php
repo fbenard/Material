@@ -21,16 +21,27 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 		//
 
 		$columns = $query->columns;
-		$values = $query->values;
 
 		foreach ($columns as &$column)
 		{
 			$column = '`' . $column . '`';
 		}
 
+
+		//
+
+		$values = $query->values;
+
 		foreach ($values as &$value)
 		{
-			$value = '\'' . $connection->driver->secureString($value) . '\'';
+			if (is_null($value) === true)
+			{
+				$value = 'NULL';
+			}
+			else
+			{
+				$value = '\'' . $connection->driver->secureString($value) . '\'';
+			}
 		}
 
 
