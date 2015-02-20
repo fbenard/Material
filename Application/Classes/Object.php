@@ -37,6 +37,11 @@ class Object
 		}
 
 
+		// Build a property for the ID
+
+		$this->_properties['id'] = null;
+
+
 		// Build properties
 
 		foreach ($objectProperties as $propertyCode => $property)
