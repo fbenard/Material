@@ -126,15 +126,21 @@ class ObjectManager
 	{
 		//
 
-		$input = \z\service('factory/query')
+		$inputs = \z\service('factory/query')
 		->select()
 		->from($object->modelCode)
-		->where('id', '=', $objectId);
+		->where('id', '=', $objectId)
+		->execute();
 
 
 		//
 
-		$this->import($object, $input);
+		$input = array_shift($inputs);
+
+
+		//
+
+		$this->importObject($object, $input);
 	}
 
 
