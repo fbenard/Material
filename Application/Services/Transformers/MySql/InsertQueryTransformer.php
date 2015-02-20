@@ -18,29 +18,37 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 
 	public function transform($query, $connection)
 	{
-		//
+		// Build columns and values
 
 		$columns = $query->columns;
-
-		foreach ($columns as &$column)
-		{
-			$column = '`' . $column . '`';
-		}
-
-
-		//
-
 		$values = $query->values;
 
-		foreach ($values as &$value)
+		foreach ($columns as $key => &$column)
 		{
-			if (is_null($value) === true)
+			// Skip the ID
+
+			if ($column === 'id')
 			{
-				$value = 'NULL';
+				unset($columns[$key]);
+				unset($values[$key]);
+				continue;
+			}
+
+
+			// Store the column
+
+			$column = '`' . $column . '`';
+
+
+			// Store the value
+
+			if (is_null($values[$key]) === true)
+			{
+				$values[$key] = 'NULL';
 			}
 			else
 			{
-				$value = '\'' . $connection->driver->secureString($value) . '\'';
+				$values[$key] = '\'' . $connection->driver->secureString($values[$key]) . '\'';
 			}
 		}
 
