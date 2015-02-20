@@ -14,7 +14,7 @@ extends \fbenard\Material\Classes\AbstractQuery
 {
 	// Attributes
 
-	protected $_counts = null;
+	protected $_count = null;
 	protected $_fields = null;
 	protected $_from = null;
 	protected $_groupBy = null;
@@ -37,10 +37,26 @@ extends \fbenard\Material\Classes\AbstractQuery
 
 		// Build attributes
 
-		$this->_counts = [];
+		$this->_count = [];
 		$this->_fields = [];
 		$this->_groupBy = [];
 		$this->_orderBy = [];
+		$this->_where = [];
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function andWhere($where)
+	{
+		// Store where
+
+		$this->_where[] = func_get_args();
+		
+
+		return $this;
 	}
 
 
@@ -52,7 +68,7 @@ extends \fbenard\Material\Classes\AbstractQuery
 	{
 		// Store field
 
-		$this->_counts[$fieldCode] = $alias;
+		$this->_count[$fieldCode] = $alias;
 		
 
 		return $this;
@@ -172,7 +188,7 @@ extends \fbenard\Material\Classes\AbstractQuery
 	{
 		// Store where
 
-		$this->_where = $where;
+		$this->_where[] = func_get_args();
 		
 
 		return $this;
