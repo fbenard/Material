@@ -135,9 +135,29 @@ class Object
 	 *
 	 */
 
+	public function isLoaded()
+	{
+		return \z\service('manager/object')->isObjectLoaded($this);
+	}
+
+
+	/**
+	 *
+	 */
+
 	public function load($objectId)
 	{
 		return \z\service('manager/object')->loadObject($this, $objectId);
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function reset()
+	{
+		return \z\service('manager/object')->resetObject($this);
 	}
 
 

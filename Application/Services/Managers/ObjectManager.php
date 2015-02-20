@@ -66,6 +66,27 @@ class ObjectManager
 	 *
 	 */
 
+	public function isObjectLoaded(&$object)
+	{
+		//
+
+		$objectId = $object->get('id');
+
+		if (empty($objectId) === true)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+
+	
+	/**
+	 *
+	 */
+
 	public function loadObject(&$object, $objectId)
 	{
 		//
@@ -79,6 +100,19 @@ class ObjectManager
 		//
 
 		$this->import($object, $input);
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function resetObject(&$object)
+	{
+		foreach ($object->properties as $propertyCode => $property)
+		{
+			$object->set($propertyCode, null);
+		}
 	}
 
 
