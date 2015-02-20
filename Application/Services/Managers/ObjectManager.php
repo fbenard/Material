@@ -65,6 +65,14 @@ class ObjectManager
 
 	public function importObject(&$object, $input)
 	{
+		// Make sure input is an array
+
+		if (is_array($input) === false)
+		{
+			$input = [];
+		}
+
+		
 		//
 
 		foreach ($object->properties as $propertyCode => $propertyValue)
