@@ -97,9 +97,7 @@ class ObjectManager
 	{
 		//
 
-		$objectId = $object->get('id');
-
-		if (empty($objectId) === true)
+		if (empty($object->get('id')) === true)
 		{
 			return false;
 		}
