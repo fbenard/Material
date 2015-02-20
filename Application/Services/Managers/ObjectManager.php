@@ -34,12 +34,11 @@ class ObjectManager
 	{
 		//
 		
-		$query = new \fbenard\Material\Classes\Query();
-
-		$query
+		\z\service('factory/query')
 		->delete()
 		->from($this->_nameSingular)
-		->where('id', '=', $this->getId());
+		->where('id', '=', $this->getId())
+		->execute();
 	}
 
 	
@@ -49,6 +48,14 @@ class ObjectManager
 
 	public function duplicateObject(&$object)
 	{
+		//
+
+		$object->set('id', null);
+
+
+		//
+
+		$object->save();
 	}
 
 	
