@@ -65,11 +65,17 @@ class ObjectManager
 
 	public function importObject(&$object, $input)
 	{
-		foreach ($object->properties as $propertyCode => $property)
+		//
+
+		foreach ($object->properties as $propertyCode => $propertyValue)
 		{
 			if (array_key_exists($propertyCode, $input) === true)
 			{
 				$object->set($propertyCode, $input[$propertyCode]);
+			}
+			else
+			{
+				$object->set($propertyCode, null);
 			}
 		}
 	}
