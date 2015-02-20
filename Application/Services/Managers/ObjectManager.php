@@ -17,6 +17,12 @@ class ObjectManager
 
 	public function clearObject(&$object)
 	{
+		//
+		
+		\z\service('factory/query')
+		->delete()
+		->from($this->_nameSingular)
+		->execute();
 	}
 
 	
