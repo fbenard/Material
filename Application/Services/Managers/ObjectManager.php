@@ -128,7 +128,7 @@ class ObjectManager
 
 	public function resetObject(&$object)
 	{
-		foreach ($object->properties as $propertyCode => $property)
+		foreach ($object->properties as $propertyCode => $propertyValue)
 		{
 			$object->set($propertyCode, null);
 		}
