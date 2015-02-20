@@ -90,7 +90,7 @@ class Object
 	 *
 	 */
 
-	public function export($input)
+	public function export()
 	{
 		return \z\service('manager/object')->exportObject($this);
 	}

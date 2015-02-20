@@ -63,6 +63,16 @@ class ObjectManager
 	 *
 	 */
 
+	public function exportObject(&$object)
+	{
+		return $object->properties;
+	}
+
+	
+	/**
+	 *
+	 */
+
 	public function importObject(&$object, $input)
 	{
 		// Make sure input is an array
