@@ -283,7 +283,7 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 				$conditions[] = '`' . $condition[0] . '` ' . $condition[1] . ' \'' . $condition[2] . '\'';
 			}
 
-			$result[] = implode(', ', $conditions);
+			$result[] = implode(' AND ', $conditions);
 		}
 		
 
