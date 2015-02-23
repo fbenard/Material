@@ -102,27 +102,7 @@ class Object
 
 	public function get($propertyCode)
 	{
-		// Check whether property exists
-
-		if (array_key_exists($propertyCode, $this->_properties) === false)
-		{
-			\z\e
-			(
-				EXCEPTION_OBJECT_PROPERTY_NOT_FOUND,
-				[
-					'propertyCode' => $propertyCode,
-					'properties' => $this->_properties
-				]
-			);
-		}
-
-
-		// Get the property value
-
-		$propertyValue = $this->_properties[$propertyCode];
-
-
-		return $propertyValue;
+		return \z\service('manager/object')->getObjectProperty($this, $propertyCode);
 	}
 
 

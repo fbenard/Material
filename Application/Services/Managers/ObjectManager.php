@@ -15,7 +15,7 @@ class ObjectManager
 	 *
 	 */
 
-	public function clearObject(&$object)
+	public function clearObject($object)
 	{
 		//
 		
@@ -30,7 +30,7 @@ class ObjectManager
 	 *
 	 */
 
-	public function deleteObject(&$object)
+	public function deleteObject($object)
 	{
 		//
 		
@@ -46,7 +46,7 @@ class ObjectManager
 	 *
 	 */
 
-	public function duplicateObject(&$object)
+	public function duplicateObject($object)
 	{
 		//
 
@@ -63,9 +63,39 @@ class ObjectManager
 	 *
 	 */
 
-	public function exportObject(&$object)
+	public function exportObject($object)
 	{
 		return $object->properties;
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function getObjectProperty($object, $propertyCode)
+	{
+		// Check whether property exists
+
+		if (array_key_exists($propertyCode, $object->properties) === false)
+		{
+			\z\e
+			(
+				EXCEPTION_OBJECT_PROPERTY_NOT_FOUND,
+				[
+					'propertyCode' => $propertyCode,
+					'properties' => $object->properties
+				]
+			);
+		}
+
+
+		// Get the property value
+
+		$propertyValue = $object->properties[$propertyCode];
+
+
+		return $propertyValue;
 	}
 
 	
@@ -103,7 +133,7 @@ class ObjectManager
 	 *
 	 */
 
-	public function isObjectLoaded(&$object)
+	public function isObjectLoaded($object)
 	{
 		//
 
@@ -161,7 +191,7 @@ class ObjectManager
 	 *
 	 */
 
-	public function saveObject(&$object)
+	public function saveObject($object)
 	{
 		// Save the object
 
@@ -179,7 +209,7 @@ class ObjectManager
 	 *
 	 */
 
-	public function searchObject(&$object, $query = null, $page = null, $limit = null)
+	public function searchObject($object, $query = null, $page = null, $limit = null)
 	{
 		// Compute size of collection
 
