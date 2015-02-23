@@ -23,7 +23,7 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 		$columns = $query->columns;
 		$values = $query->values;
 
-		foreach ($columns as $key => &$column)
+		foreach ($columns as $key => $column)
 		{
 			// Skip the ID
 
@@ -37,7 +37,7 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 
 			// Store the column
 
-			$column = '`' . $column . '`';
+			$columns[$key] = '`' . $column . '`';
 
 
 			// Store the value
@@ -75,7 +75,6 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 
 		if ($query->updateOnDuplicate === true)
 		{
-			$result[] = 'ON DUPLICATE KEY UPDATE';
 			$columns_values = [];
 
 			foreach ($columns as $key => $column)
@@ -83,6 +82,7 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 				$columns_values[] = $column . ' = ' . $values[$key];
 			}
 
+			$result[] = 'ON DUPLICATE KEY UPDATE';
 			$result[] = implode(', ', $columns_values);
 		}
 
