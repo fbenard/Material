@@ -34,7 +34,7 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 		$result[] = '`' . $query->tableCode . '`';
 		$result[] = 'FIELDS';
 		$result[] = 'TERMINATED BY';
-		$result[] = '\';\'';
+		$result[] = '\',\'';
 		$result[] = 'OPTIONALLY ENCLOSED BY';
 		$result[] = '\'"\'';
 		$result[] = 'LINES';
