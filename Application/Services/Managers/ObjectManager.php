@@ -30,7 +30,7 @@ class ObjectManager
 	 *
 	 */
 
-	public function deleteObject($object)
+	public function deleteObject(&$object)
 	{
 		//
 		
@@ -39,23 +39,6 @@ class ObjectManager
 		->from($this->_nameSingular)
 		->where('id', '=', $this->getId())
 		->execute();
-	}
-
-	
-	/**
-	 *
-	 */
-
-	public function duplicateObject($object)
-	{
-		//
-
-		$object->set('id', null);
-
-
-		//
-
-		$object->save();
 	}
 
 	
@@ -126,6 +109,27 @@ class ObjectManager
 				$object->set($propertyCode, null);
 			}
 		}
+	}
+
+	
+	/**
+	 *
+	 */
+
+	public function indexObject(&$object)
+	{
+		/*
+		The idea is to have at least one index_ table per model, so that it simplifies searching, listing, previewing, etc.
+		For instance an issue could be index with the following properties:
+		- organization (id, code, name)
+		- repository (id, code, name)
+		- milestone (id, code, name)
+		- assignee (id, code, name)
+		- state (open, closed, rejected)
+		- type (bug, enhancement, test, etc.)
+		- module (engage, loop, etc.)
+		- weight (1-5)
+		*/
 	}
 
 	
@@ -242,6 +246,43 @@ class ObjectManager
 
 
 		return $result;
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function setObjectProperty(&$object, $propertyCode, $propertyValue)
+	{
+		//
+
+		$objectProperties = $object->properties;
+
+
+		// Check whether property exists
+
+		if (array_key_exists($propertyCode, $objectProperties) === false)
+		{
+			\z\e
+			(
+				EXCEPTION_OBJECT_PROPERTY_NOT_FOUND,
+				[
+					'propertyCode' => $propertyCode,
+					'properties' => $objectProperties
+				]
+			);
+		}
+
+
+		// Store the property value
+
+		$objectProperties[$propertyCode] = $propertyValue;
+
+
+		//
+
+		$object->properties = $objectProperties;
 	}
 }
 

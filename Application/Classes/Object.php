@@ -80,16 +80,6 @@ class Object
 	 *
 	 */
 
-	public function duplicate()
-	{
-		return \z\service('manager/object')->duplicateObject($this);
-	}
-
-
-	/**
-	 *
-	 */
-
 	public function export()
 	{
 		return \z\service('manager/object')->exportObject($this);
@@ -113,6 +103,16 @@ class Object
 	public function import($input)
 	{
 		return \z\service('manager/object')->importObject($this, $input);
+	}
+
+
+	/**
+	 *
+	 */
+
+	public function index()
+	{
+		return \z\service('manager/object')->indexObject($this);
 	}
 
 
@@ -172,24 +172,7 @@ class Object
 
 	public function set($propertyCode, $propertyValue)
 	{
-		// Check whether property exists
-
-		if (array_key_exists($propertyCode, $this->_properties) === false)
-		{
-			\z\e
-			(
-				EXCEPTION_OBJECT_PROPERTY_NOT_FOUND,
-				[
-					'propertyCode' => $propertyCode,
-					'properties' => $this->_properties
-				]
-			);
-		}
-
-
-		// Store the property value
-
-		$this->_properties[$propertyCode] = $propertyValue;
+		return \z\service('manager/object')->setObjectProperty($this, $propertyCode, $propertyValue);
 	}
 }
 
