@@ -110,9 +110,9 @@ class Table
 	 *
 	 */
 
-	public function primaryKey($fieldCode)
+	public function primaryKey($fields)
 	{
-		$this->_primaryKey = $fieldCode;
+		$this->_primaryKey = $fields;
 	}
 
 

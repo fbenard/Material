@@ -94,13 +94,29 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 		$result = [];
 
 
-		// Add the primary key
+		//
 
 		$primaryKey = $table->primaryKey;
 
+		if (is_array($primaryKey) === false)
+		{
+			$primaryKey = [];
+		}
+
+
+		//
+
+		foreach ($primaryKey as &$fieldCode)
+		{
+			$fieldCode = '`' . $fieldCode . '`';
+		}
+
+
+		//
+
 		if (empty($primaryKey) === false)
-		{		
-			$result[] = 'PRIMARY KEY (`' . $primaryKey . '`)';
+		{
+			$result[] = 'PRIMARY KEY (' . implode(', ', $primaryKey) . ')';
 		}
 
 
