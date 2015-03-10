@@ -202,18 +202,8 @@ class ObjectManager
 		\z\dispatch
 		(
 			EVENT_OBJECT_SAVE_PRE,
-			[
-				'object' => $object
-			],
-			$this
+			new \fbenard\Material\Events\ObjectSaveEvent($this, $object)
 		);
-		/*
-		\z\dispatch
-		(
-			EVENT_OBJECT_SAVE_PRE,
-			new \fbenard\Material\Events\ObjectSavePreEvent($this, $object)
-		);
-		*/
 
 
 		// Save the object
@@ -232,10 +222,7 @@ class ObjectManager
 		\z\dispatch
 		(
 			EVENT_OBJECT_SAVE_POST,
-			[
-				'object' => $object
-			],
-			$this
+			new \fbenard\Material\Events\ObjectSaveEvent($this, $object)
 		);
 	}
 
