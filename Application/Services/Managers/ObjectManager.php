@@ -197,6 +197,18 @@ class ObjectManager
 
 	public function saveObject($object)
 	{
+		// Dispatch pre event
+
+		\z\dispatch
+		(
+			EVENT_OBJECT_SAVE_PRE,
+			[
+				'object' => $object
+			],
+			$this
+		);
+
+
 		// Save the object
 
 		\z\service('factory/query')
@@ -206,6 +218,18 @@ class ObjectManager
 		->values(array_values($object->properties))
 		->updateOnDuplicate()
 		->execute();
+
+
+		// Dispatch post event
+
+		\z\dispatch
+		(
+			EVENT_OBJECT_SAVE_POST,
+			[
+				'object' => $object
+			],
+			$this
+		);
 	}
 
 
