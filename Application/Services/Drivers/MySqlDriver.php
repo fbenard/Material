@@ -136,6 +136,10 @@ class MySqlDriver
 		{
 			return $queryResult->fetch_all(MYSQLI_ASSOC);
 		}
+		else
+		{
+			return $this->getLastId();
+		}
 	}
 
 
