@@ -207,6 +207,13 @@ class ObjectManager
 			],
 			$this
 		);
+		/*
+		\z\dispatch
+		(
+			EVENT_OBJECT_SAVE_PRE,
+			new \fbenard\Material\Events\ObjectSavePreEvent($this, $object)
+		);
+		*/
 
 
 		// Save the object
