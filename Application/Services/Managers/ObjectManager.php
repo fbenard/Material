@@ -208,13 +208,18 @@ class ObjectManager
 
 		// Save the object
 
-		\z\service('factory/query')
+		$id = \z\service('factory/query')
 		->insert()
 		->into($object->modelCode)
 		->columns(array_keys($object->properties))
 		->values(array_values($object->properties))
 		->updateOnDuplicate()
 		->execute();
+
+
+		// Update the ID
+
+		$object->set('id', $id);
 
 
 		// Dispatch post event
