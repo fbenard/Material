@@ -29,6 +29,7 @@ class ConnectionFactory
 
 		// Store the definition
 
+		$connection->charset = $definition['charset'];
 		$connection->host = $definition['host'];
 		$connection->login = $definition['login'];
 		$connection->password = $definition['password'];
@@ -56,6 +57,7 @@ class ConnectionFactory
 		$definition = array_merge
 		(
 			[
+				'charset' => null,
 				'host' => null,
 				'login' => null,
 				'name' => null,

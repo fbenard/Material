@@ -19,6 +19,7 @@ class Connection
 	
 	// Attributes
 
+	private $_charset = null;
 	private $_driver = null;
 	private $_host = null;
 	private $_login = null;
