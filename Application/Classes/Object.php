@@ -160,16 +160,6 @@ class Object
 	 *
 	 */
 
-	public function search($query = null, $page = null, $limit = null)
-	{
-		return \z\service('manager/object')->searchObject($this, $query, $page, $limit);
-	}
-
-
-	/**
-	 *
-	 */
-
 	public function set($propertyCode, $propertyValue)
 	{
 		return \z\service('manager/object')->setObjectProperty($this, $propertyCode, $propertyValue);
