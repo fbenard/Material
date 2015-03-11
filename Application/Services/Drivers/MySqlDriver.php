@@ -53,7 +53,7 @@ class MySqlDriver
 				EXCEPTION_DB_CONNECTION_FAILED,
 				[
 					'error' => $this->_handle->connect_error,
-					'connection' => $connection
+					'connection' => $this->_connection
 				]
 			);
 		}
