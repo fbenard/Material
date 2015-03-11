@@ -18,6 +18,7 @@ abstract class AbstractQuery
 	
 	// Attributes
 
+	protected $_connection = null;
 	protected $_type = null;
 
 
@@ -43,6 +44,11 @@ abstract class AbstractQuery
 		// Store the query type
 
 		$this->_type = $queryType;
+
+
+		// Build the connection
+
+		$this->_connection = \z\service('manager/connection')->getConnection();
 	}
 
 
@@ -52,24 +58,19 @@ abstract class AbstractQuery
 
 	public function execute()
 	{
-		// Build the connection
-
-		$connection = \z\service('manager/connection')->getConnection();
-
-
 		// Build the transformer
 
-		$queryTransformer = \z\service('transformer/' . $connection->system . '/query/' . $this->_type);
+		$queryTransformer = \z\service('transformer/' . $this->_connection->system . '/query/' . $this->_type);
 
 
 		// Transform the query
 
-		$query = $queryTransformer->transform($this, $connection);
+		$query = $queryTransformer->transform($this, $this->_connection);
 
 
 		// Execute the query
 
-		$result = $connection->driver->executeQuery($query);
+		$result = $this->_connection->driver->executeQuery($query);
 
 
 		return $result;
