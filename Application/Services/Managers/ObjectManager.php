@@ -206,19 +206,24 @@ class ObjectManager
 		);
 
 
-		// Save the object
+		// Build the query
 
-		$id = \z\service('factory/query')
+		$query = \z\service('factory/query')
 		->insert()
 		->into($object->modelCode)
 		->columns(array_keys($object->properties))
 		->values(array_values($object->properties))
-		->updateOnDuplicate()
-		->execute();
+		->updateOnDuplicate();
+
+
+		// Save the object
+
+		$result = $query->execute();
 
 
 		// Update the ID
 
+		$id = $query->connection->driver->getLastId();
 		$object->set('id', $id);
 
 
