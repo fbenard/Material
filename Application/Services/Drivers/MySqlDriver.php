@@ -138,7 +138,7 @@ class MySqlDriver
 		}
 		else
 		{
-			return $this->getLastId();
+			return $queryResult;
 		}
 	}
 
