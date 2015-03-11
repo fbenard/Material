@@ -195,7 +195,7 @@ class ObjectManager
 	 *
 	 */
 
-	public function saveObject($object)
+	public function saveObject(&$object)
 	{
 		// Dispatch pre event
 
