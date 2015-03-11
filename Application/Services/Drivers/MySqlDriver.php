@@ -62,6 +62,7 @@ class MySqlDriver
 		// Setup the handle
 
 		$this->_handle->options(MYSQLI_OPT_LOCAL_INFILE, true);
+		$this->_handle->set_charset($this->_connection->charset);
 	}
 
 
