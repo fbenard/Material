@@ -263,6 +263,18 @@ class ObjectManager
 		}
 
 
+		//
+
+		if
+		(
+			($propertyCode === 'id') &&
+			(empty($propertyValue) === true)
+		)
+		{
+			//return;
+		}
+
+
 		// Store the property value
 
 		$objectProperties[$propertyCode] = $propertyValue;
