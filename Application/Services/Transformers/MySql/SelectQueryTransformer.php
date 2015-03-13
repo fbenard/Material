@@ -204,7 +204,7 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 
 		$offset = $query->offset;
 
-		if (empty($offset) === false)
+		if (is_null($offset) === false)
 		{		
 			$result[] = 'OFFSET';
 			$result[] = $offset;
