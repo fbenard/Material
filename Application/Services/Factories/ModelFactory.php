@@ -93,6 +93,7 @@ class ModelFactory
 		$model = array_merge
 		(
 			[
+				'abstract' => null,
 				'extends' => null,
 				'properties' => [],
 				'relations' => []
