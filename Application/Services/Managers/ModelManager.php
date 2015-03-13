@@ -62,18 +62,37 @@ class ModelManager
 
 	public function listModels()
 	{
-		//
+		// List paths to models
 
 		$paths = \z\service('helper/file')->listFiles(PATH_APPLICATION . 'Config/Models/', '*.json');
 
 
-		//
+		// Parse each path
 
 		$result = [];
 
 		foreach ($paths as $path)
 		{
+			// Extract the model code
+
 			$modelCode = basename($path, '.json');
+
+
+			// Get the model
+
+			$model = $this->getModel($modelCode);
+
+
+			// Skip abstract models
+
+			if ($model['abstract'] === true)
+			{
+				continue;
+			}
+
+
+			// Store the model
+
 			$result[] = $modelCode;
 		}
 
