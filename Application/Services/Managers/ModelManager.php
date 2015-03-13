@@ -80,6 +80,54 @@ class ModelManager
 
 		return $result;
 	}
+
+
+	/**
+	 *
+	 */
+
+	public function scrollModel($modelCode, $page = null, $limit = null)
+	{
+		// Define the limit
+
+		if (empty($limit) === true)
+		{
+			$limit = \z\pref('splio/goloboard/documents/limit');
+		}
+
+
+		// Select inputs within page/limit
+
+		$inputs = \z\service('factory/query')
+		->select()
+		->from($modelCode)
+		->offset($page * $limit)
+		->limit($limit)
+		->execute();
+
+
+		//
+
+		foreach ($inputs as $input)
+		{
+			//
+
+			$object = \z\service('factory/object')->buildObject($modelCode);
+
+
+			//
+
+			$object->import($input);
+
+
+			//
+
+			$objects[] = $object;
+		}
+		
+
+		return [];
+	}
 }
 
 ?>
