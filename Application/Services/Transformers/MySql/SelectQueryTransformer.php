@@ -31,7 +31,7 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 			$this->transformGroupBy($query, $connection),
 			$this->transformOrderBy($query, $connection),
 			$this->transformLimit($query, $connection),
-			$this->transformOffset($query, $connection),
+			$this->transformOffset($query, $connection)
 		];
 		
 
