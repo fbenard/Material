@@ -54,6 +54,32 @@ class ModelManager
 
 		return $model;
 	}
+
+
+	/**
+	 *
+	 */
+
+	public function listModels()
+	{
+		//
+
+		$paths = \z\service('helper/file')->listFiles(PATH_APPLICATION . 'Config/Models/', '*.json');
+
+
+		//
+
+		$result = [];
+
+		foreach ($paths as $path)
+		{
+			$modelCode = basename($path, '.json');
+			$result[] = $modelCode;
+		}
+
+
+		return $result;
+	}
 }
 
 ?>
