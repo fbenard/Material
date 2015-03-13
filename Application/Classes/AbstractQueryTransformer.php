@@ -36,7 +36,7 @@ abstract class AbstractQueryTransformer
 
 		foreach ($result as $key => &$value)
 		{
-			if (empty($value) === true)
+			if (is_null($value) === true)
 			{
 				unset($result[$key]);
 			}
