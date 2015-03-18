@@ -87,9 +87,12 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 
 		$fields = $query->fields;
 
-		foreach ($fields as $fieldCode)
-		{
-			$result[] = '`' . $fieldCode . '`';
+		if (is_array($fields) === true)
+		{		
+			foreach ($fields as $fieldCode)
+			{
+				$result[] = '`' . $fieldCode . '`';
+			}
 		}
 
 		
@@ -97,9 +100,12 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 
 		$count = $query->count;
 
-		foreach ($count as $fieldCode => $alias)
-		{
-			$result[] = 'COUNT(`' . $fieldCode . '`) AS ' . $alias;
+		if (is_array($count) === true)
+		{		
+			foreach ($count as $fieldCode => $alias)
+			{
+				$result[] = 'COUNT(`' . $fieldCode . '`) AS ' . $alias;
+			}
 		}
 
 		
