@@ -125,27 +125,29 @@ class ModelManager
 		->execute();
 
 
-		//
+		// Parse each input
+
+		$result = [];
 
 		foreach ($inputs as $input)
 		{
-			//
+			// Build an object
 
 			$object = \z\service('factory/object')->buildObject($modelCode);
 
 
-			//
+			// Import the input
 
 			$object->import($input);
 
 
-			//
+			// Store the object
 
-			$objects[] = $object;
+			$result[] = $object;
 		}
 		
 
-		return [];
+		return $result;
 	}
 }
 
