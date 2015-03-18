@@ -30,6 +30,31 @@ class ModelManager
 	 *
 	 */
 
+	public function countModel($modelCode)
+	{
+		// Count objects
+
+		$result = \z\service('factory/query')
+		->select()
+		->from($modelCode)
+		->count('id', 'nbObjects')
+		->execute();
+
+
+		// Extract the total number of objects
+
+		$result = array_pop($result);
+		$result = $result['nbObjects'];
+		
+
+		return $result;
+	}
+
+
+	/**
+	 *
+	 */
+
 	public function getModel($modelCode)
 	{
 		// As the model already been retrieved?
