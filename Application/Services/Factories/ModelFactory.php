@@ -70,6 +70,20 @@ class ModelFactory
 		}
 
 
+		// Inject the ID
+
+		$model['properties'] = array_merge
+		(
+			[
+				'id' =>
+				[
+					'type' => 'integer'
+				]
+			],
+			$model['properties']
+		);
+
+		
 		return $model;
 	}
 
