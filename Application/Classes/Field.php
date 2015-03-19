@@ -20,7 +20,7 @@ class Field
 
 	private $_code = null;
 	private $_type = null;
-	private $_default = null;
+	private $_defaultValue = null;
 	private $_isBig = false;
 	private $_isIncremented = false;
 	private $_isLong = false;
@@ -63,11 +63,11 @@ class Field
 	 *
 	 */
 
-	public function default($default)
+	public function defaultValue($defaultValue)
 	{
 		//
 
-		$this->_default = $default;
+		$this->_defaultValue = $defaultValue;
 
 
 		return $this;

@@ -103,14 +103,14 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 
 			//
 
-			if (is_null($field->default) === true)
+			if (is_null($field->defaultValue) === true)
 			{
 				$result[] = 'DEFAULT NULL';
 			}
-			else if (empty($field->default) === false)
+			else if (empty($field->defaultValue) === false)
 			{
 				$result[] = 'DEFAULT';
-				$result[] = '\'' .$field->default . '\'';
+				$result[] = '\'' .$field->defaultValue . '\'';
 			}
 		}
 		else
