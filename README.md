@@ -35,22 +35,6 @@ composer update
 ```
 
 
-## Usage
-
-```
-use \Material\Services\Manager\DataManager;
-
-DataManager::...
-```
-
-Note that if you're using [Zero](https://github.com/fbenard/zero) using Material is even easier:
-
-```php
-\z\service('manager/data')->...;
-Material::...
-```
-
-
 ## Authors
 
 Material is carefully taken care of by [Fabien BÉNARD](http://fabienbenard.com).
