@@ -1,6 +1,6 @@
 {
 	"name": "fbenard/material",
-	"description": "ORM",
+	"description": "",
 	"type": "library",
 	"keywords": ["orm", "php"],
 	"homepage": "http://github.com/fbenard/material",
@@ -9,14 +9,14 @@
 	[
 		{
 			"name": "Fabien BÉNARD",
-			"email": "contact@fabienbenard.com",
+			"email": "fbenard.public@gmail.com",
 			"homepage": "http://fabienbenard.com",
 			"role": "Developer"
 		}
 	],
 	"support":
 	{
-		"email": "fb.spam@me.com",
+		"email": "fbenard.public@gmail.com",
 		"issues": "http://github.com/fbenard/material/issues",
 		"source": "http://github.com/fbenard/material"
 	},
