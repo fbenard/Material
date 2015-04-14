@@ -37,7 +37,7 @@ class ModelManager
 		$result = \z\service('factory/query')
 		->select()
 		->from($modelCode)
-		->count('id', 'nbObjects')
+		->count('*', 'nbObjects')
 		->execute();
 
 
