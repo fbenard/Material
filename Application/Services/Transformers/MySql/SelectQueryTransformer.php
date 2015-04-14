@@ -104,7 +104,21 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 		{		
 			foreach ($count as $fieldCode => $alias)
 			{
-				$result[] = 'COUNT(`' . $fieldCode . '`) AS ' . $alias;
+				//
+
+				if ($fieldCode === '*')
+				{
+					$quote = null;
+				}
+				else
+				{
+					$quote = '`';
+				}
+
+
+				//
+
+				$result[] = 'COUNT(' . $quote . $fieldCode . $quote . ') AS ' . $alias;
 			}
 		}
 
