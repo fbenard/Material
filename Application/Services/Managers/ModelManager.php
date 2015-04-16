@@ -130,23 +130,23 @@ class ModelManager
 	 *
 	 */
 
-	public function scrollModel($modelCode, $page = null, $limit = null)
+	public function scrollModel($modelCode, $page = null, $pageSize = null)
 	{
-		// Define the limit
+		// Define the page size
 
-		if (empty($limit) === true)
+		if (empty($pageSize) === true)
 		{
-			$limit = \z\pref('splio/goloboard/documents/limit');
+			$pageSize = \z\pref('splio/goloboard/page/size');
 		}
 
 
-		// Select inputs within page/limit
+		// Select inputs within the page
 
 		$inputs = \z\service('factory/query')
 		->select()
 		->from($modelCode)
-		->offset($page * $limit)
-		->limit($limit)
+		->offset($page * $pageSize)
+		->limit($pageSize)
 		->execute();
 
 
