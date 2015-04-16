@@ -136,7 +136,7 @@ class ModelManager
 
 		if (empty($pageSize) === true)
 		{
-			$pageSize = \z\pref('splio/goloboard/page/size');
+			$pageSize = \z\pref('fbenard/material/page/size');
 		}
 
 
