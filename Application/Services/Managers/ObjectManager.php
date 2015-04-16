@@ -56,7 +56,7 @@ class ObjectManager
 	 *
 	 */
 
-	public function getObjectProperty($object, $propertyCode)
+	public function getObjectProperty($object, $propertyCode, $page = null, $pageSize = null)
 	{
 		// Check whether property exists
 

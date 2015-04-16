@@ -85,9 +85,9 @@ class Object
 	 *
 	 */
 
-	public function get($propertyCode)
+	public function get($propertyCode, $page = null, $pageSize = null)
 	{
-		return \z\service('manager/object')->getObjectProperty($this, $propertyCode);
+		return \z\service('manager/object')->getObjectProperty($this, $propertyCode, $page, $pageSize);
 	}
 
 
