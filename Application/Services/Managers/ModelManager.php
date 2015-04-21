@@ -85,6 +85,66 @@ class ModelManager
 	 *
 	 */
 
+	public function indexModel($modelCode)
+	{
+		// Count objects
+
+		$nbObjects = $this->countModel($modelCode);
+		$nbObjectsCompleted = 0;
+
+
+		// Parse each object
+
+		$page = 0;
+
+		do
+		{
+			// Scroll to grab objects
+
+			$objects = $this->scrollModel($modelCode, $page);
+
+			
+			// Parse each object
+
+			foreach ($objects as $object)
+			{
+				// Try indexing the document
+
+				try
+				{
+					// Log progress
+
+					\z\dlogp
+					(
+						++$nbObjectsCompleted,
+						$nbObjects,
+						$timeOfStart
+					);
+
+
+					// Index the object
+
+					\z\service('manager/object')->indexObject($object);
+				}
+				catch (\Exception $e)
+				{
+					\z\service('manager/exception')->onException($e);
+				}
+			}
+
+			
+			// Move on to the next page
+			
+			$page++;
+		}
+		while (empty($objects) === false);
+	}
+
+
+	/**
+	 *
+	 */
+
 	public function listModels()
 	{
 		// List paths to models
