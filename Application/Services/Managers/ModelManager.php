@@ -140,7 +140,7 @@ class ModelManager
 		}
 
 
-		// Select inputs within the page
+		// Select inputs within the page boundary
 
 		$inputs = \z\service('factory/query')
 		->select()
