@@ -1,5 +1,8 @@
 {
 	"manager/connection": "\\fbenard\\Material\\Services\\Managers\\ConnectionManager",
+	"manager/document": "\\fbenard\\Material\\Services\\Managers\\DocumentManager",
+	"manager/index": "\\fbenard\\Material\\Services\\Managers\\IndexManager",
 	"manager/model": "\\fbenard\\Material\\Services\\Managers\\ModelManager",
-	"manager/object": "\\fbenard\\Material\\Services\\Managers\\ObjectManager"
+	"manager/object": "\\fbenard\\Material\\Services\\Managers\\ObjectManager",
+	"manager/search": "\\fbenard\\Material\\Services\\Managers\\SearchManager"
 }
