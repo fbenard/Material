@@ -1,3 +1,4 @@
 {
-	"driver/db/mysql": "\\fbenard\\Material\\Services\\Drivers\\MySqlDriver"
+	"driver/db/mysql": "\\fbenard\\Material\\Services\\Drivers\\MySqlDriver",
+	"driver/db/es": "\\fbenard\\Material\\Services\\Drivers\\ElasticSearchDriver"
 }
