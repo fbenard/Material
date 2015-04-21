@@ -182,6 +182,16 @@ class ObjectManager
 	 *
 	 */
 
+	public function onObjectSave($eventCode, \fbenard\Material\Events\ObjectSaveEvent $event)
+	{
+		//$this->indexObject($event->object);
+	}
+
+
+	/**
+	 *
+	 */
+
 	public function resetObject(&$object)
 	{
 		foreach ($object->properties as $propertyCode => $propertyValue)
