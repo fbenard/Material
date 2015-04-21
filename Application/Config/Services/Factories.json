@@ -1,5 +1,6 @@
 {
 	"factory/connection": "\\fbenard\\Material\\Services\\Factories\\ConnectionFactory",
+	"factory/document": "\\fbenard\\Material\\Services\\Factories\\DocumentFactory",
 	"factory/model": "\\fbenard\\Material\\Services\\Factories\\ModelFactory",
 	"factory/object": "\\fbenard\\Material\\Services\\Factories\\ObjectFactory",
 	"factory/object/property": "\\fbenard\\Material\\Services\\Factories\\ObjectPropertyFactory",
