@@ -15,7 +15,7 @@ class ObjectManager
 	 *
 	 */
 
-	public function clearObject($object)
+	public function clearObject(&$object)
 	{
 		//
 		
@@ -30,7 +30,7 @@ class ObjectManager
 	 *
 	 */
 
-	public function deleteObject($object)
+	public function deleteObject(&$object)
 	{
 		//
 		
@@ -46,7 +46,7 @@ class ObjectManager
 	 *
 	 */
 
-	public function exportObject($object)
+	public function exportObject(&$object)
 	{
 		return $object->properties;
 	}
