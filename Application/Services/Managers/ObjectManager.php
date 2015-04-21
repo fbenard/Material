@@ -30,7 +30,7 @@ class ObjectManager
 	 *
 	 */
 
-	public function deleteObject(&$object)
+	public function deleteObject($object)
 	{
 		//
 		
