@@ -118,18 +118,25 @@ class ObjectManager
 
 	public function indexObject(&$object)
 	{
-		/*
-		The idea is to have at least one index_ table per model, so that it simplifies searching, listing, previewing, etc.
-		For instance an issue could be index with the following properties:
-		- organization (id, code, name)
-		- repository (id, code, name)
-		- milestone (id, code, name)
-		- assignee (id, code, name)
-		- state (open, closed, rejected)
-		- type (bug, enhancement, test, etc.)
-		- module (engage, loop, etc.)
-		- weight (1-5)
-		*/
+		// Get the model
+
+		$model = \z\service('manager/model')->getModel($object->modelCode);
+
+
+		// Build the document
+
+		$document = \z\service('factory/document')->buildDocument($model, $object);
+
+
+		// Store the document
+
+		\z\service('manager/document')->indexDocument
+		(
+			$object->modelCode,
+			$object->modelCode,
+			$document,
+			$object->get('id')
+		);
 	}
 
 	
@@ -194,8 +201,12 @@ class ObjectManager
 
 	public function resetObject(&$object)
 	{
+		// Parse each property
+
 		foreach ($object->properties as $propertyCode => $propertyValue)
 		{
+			// Set it to NULL
+			
 			$object->set($propertyCode, null);
 		}
 	}
