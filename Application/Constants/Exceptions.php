@@ -13,6 +13,7 @@
 
 // Objects
 
+\z\cons('EXCEPTION_OBJECT_NOT_FOUND');
 \z\cons('EXCEPTION_OBJECT_PROPERTY_NOT_FOUND');
 
 
