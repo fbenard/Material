@@ -21,4 +21,9 @@
 
 \z\cons('EXCEPTION_DB_QUERY_FAILED');
 
+
+// Elastic Search
+
+\z\cons('EXCEPTION_ES_METHOD_FAILED');
+
 ?>

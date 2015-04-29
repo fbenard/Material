@@ -34,17 +34,34 @@ class ElasticSearchDriver
 	{
 		//
 
-		$result = call_user_func_array
-		(
-			[
-				$this->_client,
-				$methodCode
-			],
-			$methodArguments
-		);
+		try
+		{
+			//
+
+			$result = call_user_func_array
+			(
+				[
+					$this->_client,
+					$methodCode
+				],
+				$methodArguments
+			);
 
 
-		return $result;
+			return $result;
+		}
+		catch (\Exception $e)
+		{
+			\z\e
+			(
+				EXCEPTION_ES_METHOD_FAILED,
+				[
+					'methodCode' => $methodCode,
+					'methodArguments' => $methodArguments,
+					'error' => $e->getMessage()
+				]
+			);
+		}
 	}
 }
 
