@@ -32,11 +32,9 @@ class ElasticSearchDriver
 
 	public function __call($methodCode, $methodArguments)
 	{
-		//
-
 		try
 		{
-			//
+			// Execute the method
 
 			$result = call_user_func_array
 			(
