@@ -47,6 +47,16 @@ class IndexManager
 	 *
 	 */
 
+	public function deleteAllIndexes()
+	{
+		\z\service('driver/db/es')->indices()->delete(['index' => '_all']);
+	}
+
+
+	/**
+	 *
+	 */
+
 	public function index()
 	{
 		// List models
