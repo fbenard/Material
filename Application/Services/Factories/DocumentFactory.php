@@ -15,14 +15,14 @@ class DocumentFactory
 	 *
 	 */
 
-	public function buildDocument($model, $object)
+	public function convertObjectToDocument($object)
 	{
 		// Build the document
 
 		$document = array_merge
 		(
-			$this->convertObjectProperties($model, $object),
-			$this->convertObjectRelations($model, $object)
+			$this->convertObjectProperties($object),
+			$this->convertObjectRelations($object)
 		);
 
 
