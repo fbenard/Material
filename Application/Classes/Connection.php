@@ -13,8 +13,8 @@ class Connection
 {
 	// Traits
 
-	use \fbenard\Zero\Traits\Get;
-	use \fbenard\Zero\Traits\Set;
+	use \fbenard\Zero\Traits\GetTrait;
+	use \fbenard\Zero\Traits\SetTrait;
 
 	
 	// Attributes

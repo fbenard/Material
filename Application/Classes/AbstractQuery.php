@@ -13,7 +13,7 @@ abstract class AbstractQuery
 {
 	// Traits
 
-	use \fbenard\Zero\Traits\Get;
+	use \fbenard\Zero\Traits\GetTrait;
 
 	
 	// Attributes
