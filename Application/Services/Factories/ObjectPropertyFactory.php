@@ -36,24 +36,17 @@ class ObjectPropertyFactory
 
 		foreach ($model['relations'] as $relationCode => $relation)
 		{
-			if
-			(
-				($relation['cardinality'] === 'zero_one') ||
-				($relation['cardinality'] === 'one_one')
-			)
-			{
-				// Build the object property
+			// Build the object property
 
-				$objectProperty =
-				[
-					'type' => 'integer'
-				];
+			$objectProperty =
+			[
+				'type' => 'integer'
+			];
 
 
-				// Store the object property
+			// Store the object property
 
-				$objectProperties[$relationCode] = $this->fixObjectProperty($objectProperty);
-			}
+			$objectProperties[$relationCode] = $this->fixObjectProperty($objectProperty);
 		}
 
 
