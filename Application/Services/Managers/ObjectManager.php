@@ -284,18 +284,6 @@ class ObjectManager
 		}
 
 
-		//
-
-		if
-		(
-			($propertyCode === 'id') &&
-			(empty($propertyValue) === true)
-		)
-		{
-			//return;
-		}
-
-
 		// Set the property value
 
 		$objectProperties[$propertyCode] = $propertyValue;
