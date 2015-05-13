@@ -48,7 +48,35 @@ class ObjectManager
 
 	public function exportObject(&$object)
 	{
-		return $object->properties;
+		//
+
+		$result = [];
+
+		foreach ($object->properties as $propertyCode => $propertyValue)
+		{
+			if (is_array($propertyValue) === true)
+			{
+				foreach ($propertyValue as &$subPropertyValue)
+				{
+					if (is_object($subPropertyValue) === true)
+					{
+						$subPropertyValue = $this->exportObject($subPropertyValue);
+					}
+				}
+			}
+			else if (is_object($propertyValue) === true)
+			{
+				$propertyValue = $this->exportObject($propertyValue);
+			}
+
+
+			//
+
+			$result[$propertyCode] = $propertyValue;
+		}
+
+
+		return $result;
 	}
 
 
