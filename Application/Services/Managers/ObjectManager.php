@@ -264,7 +264,7 @@ class ObjectManager
 
 	public function setObjectProperty(&$object, $propertyCode, $propertyValue)
 	{
-		//
+		// Extract object properties
 
 		$objectProperties = $object->properties;
 
@@ -296,12 +296,12 @@ class ObjectManager
 		}
 
 
-		// Store the property value
+		// Set the property value
 
 		$objectProperties[$propertyCode] = $propertyValue;
 
 
-		//
+		// Replace object properties
 
 		$object->properties = $objectProperties;
 	}
