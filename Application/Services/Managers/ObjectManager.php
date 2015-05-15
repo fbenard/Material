@@ -48,37 +48,39 @@ class ObjectManager
 
 	public function duplicateObject(&$object)
 	{
-		// Clone the object
-
-		$result = clone $object;
-
-		
 		// Extract object properties
 
-		$objectProperties = $result->properties;
+		$objectProperties = $object->properties;
 
 
 		// Parse each object property
 
-		foreach ($objectProperties as $propertyCode => &$propertyValue)
+		/*
+		foreach ($objectProperties as $propertyCode => $propertyValue)
 		{
 			if (is_array($propertyValue) === true)
 			{
-				foreach ($propertyValue as &$subPropertyValue)
+				foreach ($propertyValue as $subPropertyCode => $subPropertyValue)
 				{
 					if (is_object($subPropertyValue) === true)
 					{
-						$subPropertyValue = $this->duplicateObject($subPropertyValue);
+						$objectProperties[$propertyCode][$subPropertyCode] = $this->duplicateObject($subPropertyValue);
 					}
 				}
 			}
 			else if (is_object($propertyValue) === true)
 			{
-				$propertyValue = $this->duplicateObject($propertyValue);
+				$objectProperties[$propertyCode] = $this->duplicateObject($propertyValue);
 			}
 		}
+		*/
 
 
+		// Build a new object
+
+		$result = \z\service('factory/object')->buildObject($object->modelCode);
+
+		
 		// Replace object properties
 
 		$result->properties = $objectProperties;
