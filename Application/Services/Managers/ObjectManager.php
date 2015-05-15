@@ -46,6 +46,52 @@ class ObjectManager
 	 *
 	 */
 
+	public function duplicateObject(&$object)
+	{
+		// Clone the object
+
+		$result = clone $object;
+
+		
+		// Extract object properties
+
+		$objectProperties = $result->properties;
+
+
+		// Parse each object property
+
+		foreach ($objectProperties as $propertyCode => &$propertyValue)
+		{
+			if (is_array($propertyValue) === true)
+			{
+				foreach ($propertyValue as &$subPropertyValue)
+				{
+					if (is_object($subPropertyValue) === true)
+					{
+						$subPropertyValue = $this->duplicateObject($subPropertyValue);
+					}
+				}
+			}
+			else if (is_object($propertyValue) === true)
+			{
+				$propertyValue = $this->duplicateObject($propertyValue);
+			}
+		}
+
+
+		// Replace object properties
+
+		$result->properties = $objectProperties;
+
+
+		return $result;
+	}
+
+	
+	/**
+	 *
+	 */
+
 	public function exportObject(&$object)
 	{
 		//

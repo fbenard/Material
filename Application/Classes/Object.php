@@ -75,6 +75,16 @@ class Object
 	 *
 	 */
 
+	public function duplicate()
+	{
+		return \z\service('manager/object')->duplicateObject($this);
+	}
+
+
+	/**
+	 *
+	 */
+
 	public function export()
 	{
 		return \z\service('manager/object')->exportObject($this);
