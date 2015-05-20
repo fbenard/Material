@@ -71,6 +71,11 @@ class SearchManager
 
 	public function search($modelCode, $query = null, $filters = null, $order = null, $group = null, $page = null, $pageSize = null)
 	{
+		// Store the search
+
+		$searchId = $this->storeSearch(func_get_args());
+
+		
 		// http://www.elastic.co/guide/en/elasticsearch/client/php-api/current/_search_operations.html
 		// http://www.elastic.co/guide/en/elasticsearch/reference/1.x/query-dsl-query-string-query.html
 
@@ -123,11 +128,6 @@ class SearchManager
 		{
 			$data[$hit['_id']] = $hit['_source'];
 		}
-
-
-		// Store the search
-
-		$searchId = $this->storeSearch(func_get_args());
 
 
 		// Build the result
