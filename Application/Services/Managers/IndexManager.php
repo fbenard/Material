@@ -64,7 +64,7 @@ class IndexManager
 		$models = \z\service('manager/model')->listModels();
 
 
-		// Parse each models
+		// Parse each model
 
 		foreach ($models as $modelCode)
 		{
