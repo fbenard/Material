@@ -1,4 +1,4 @@
 {
 	"helper/index": "\\fbenard\\Material\\Services\\Helpers\\IndexHelper",
-	"helper/object": "\\fbenard\\Material\\Services\\Helpers\\ObjectHelper"
+	"helper/object/propery": "\\fbenard\\Material\\Services\\Helpers\\ObjectPropertyHelper"
 }
