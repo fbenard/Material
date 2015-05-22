@@ -54,18 +54,12 @@ class ModelFactory
 			$baseModel = $this->buildModel($model['extends']);
 
 
-			// Merge properties and relations
+			// Merge properties
 
 			$model['properties'] = array_merge
 			(
 				$baseModel['properties'],
 				$model['properties']
-			);
-
-			$model['relations'] = array_merge
-			(
-				$baseModel['relations'],
-				$model['relations']
 			);
 		}
 
@@ -109,8 +103,7 @@ class ModelFactory
 			[
 				'abstract' => null,
 				'extends' => null,
-				'properties' => [],
-				'relations' => []
+				'properties' => []
 			],
 			$model
 		);

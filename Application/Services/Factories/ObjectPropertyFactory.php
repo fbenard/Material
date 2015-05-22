@@ -31,24 +31,6 @@ class ObjectPropertyFactory
 			$objectProperties[$propertyCode] = $this->fixObjectProperty($property);
 		}
 
-		
-		// Parse each relation
-
-		foreach ($model['relations'] as $relationCode => $relation)
-		{
-			// Build the object property
-
-			$objectProperty =
-			[
-				'type' => 'integer'
-			];
-
-
-			// Store the object property
-
-			$objectProperties[$relationCode] = $this->fixObjectProperty($objectProperty);
-		}
-
 
 		return $objectProperties;
 	}
@@ -73,7 +55,8 @@ class ObjectPropertyFactory
 		$objectProperty = array_merge
 		(
 			[
-				'type' => null,
+				'cardinality' => null,
+				'type' => null
 			],
 			$objectProperty
 		);
