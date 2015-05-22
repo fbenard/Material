@@ -9,13 +9,13 @@ namespace fbenard\Material\Services\Helpers;
  *
  */
 
-class ObjectHelper
+class ObjectPropertyHelper
 {
 	/**
 	 *
 	 */
 
-	public function isPropertyRelation($property)
+	public function isRelation($property)
 	{
 	}
 }
