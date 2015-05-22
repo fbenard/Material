@@ -25,16 +25,6 @@ extends \fbenard\Material\Classes\AbstractQueryTransformer
 
 		foreach ($columns as $key => $column)
 		{
-			// Skip the ID
-
-			if ($column === 'id')
-			{
-				unset($columns[$key]);
-				unset($values[$key]);
-				continue;
-			}
-
-
 			// Store the column
 
 			$columns[$key] = '`' . $column . '`';
