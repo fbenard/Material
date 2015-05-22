@@ -56,6 +56,7 @@ class ObjectPropertyFactory
 		(
 			[
 				'cardinality' => null,
+				'pivot' => null,
 				'type' => null
 			],
 			$objectProperty

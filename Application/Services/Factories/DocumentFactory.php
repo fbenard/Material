@@ -15,30 +15,16 @@ class DocumentFactory
 	 *
 	 */
 
-	public function convertObjectToDocument($object)
-	{
-		// Build the document
-
-		$document = array_merge
-		(
-			$this->convertObjectProperties($object),
-			$this->convertObjectRelations($object)
-		);
-
-
-		return $document;
-	}
-
-
-	/**
-	 *
-	 */
-
-	private function convertObjectProperties($model, $object)
+	public function buildDocument($modelCode, $object)
 	{
 		// Build result
 
 		$result = [];
+
+
+		// Get the model
+
+		$model = \z\service('manager/model')->getModel($modelCode);
 
 
 		// Parse each property
@@ -74,67 +60,56 @@ class DocumentFactory
 			}
 
 
+			// Relations require an additional conversion
+
+			if (\z\service('helper/object/property')->isRelation($property) === true)
+			{
+				//
+
+				if
+				(
+					($property['cardinality'] === 'zero_one') ||
+					($property['cardinality'] === 'one_one')
+				)
+				{
+					// Build the relation object
+
+					$objectRelation = $this->buildObject($property);
+
+
+					// Load the relation object
+
+					$objectRelation->load($object->get($propertyCode));
+
+					
+					//
+
+					$propertyValue =
+					[
+						'id' => $objectRelation->get('id'),
+						'ext_source' => $objectRelation->get('ext_source'),
+						'ext_id' => $objectRelation->get('ext_id'),
+						'ext_code' => $objectRelation->get('ext_code'),
+						'name' => $objectRelation->get('name'),
+						'url' => $objectRelation->get('url'),
+						'url_avatar' => $objectRelation->get('url_avatar')
+					];
+				}
+				else if
+				(
+					($property['cardinality'] === 'zero_many') ||
+					($property['cardinality'] === 'one_many')
+				)
+				{
+					// Get all relations of this object
+					//$object->get()
+				}
+			}
+
+
 			// Store the property
 
 			$result[$propertyCode] = $propertyValue;
-		}
-
-
-		return $result;
-	}
-
-
-	/**
-	 *
-	 */
-
-	private function convertObjectRelations($model, $object)
-	{
-		// Build result
-
-		$result = [];
-
-
-		// Parse each relation
-
-		foreach ($model['relations'] as $relationCode => $relation)
-		{
-			//
-
-			if
-			(
-				($relation['cardinality'] === 'zero_one') ||
-				($relation['cardinality'] === 'one_one')
-			)
-			{
-				// Build the relation object
-
-				$objectRelation = \z\service('factory/object')->buildObject($relation['type']);
-
-
-				// Load the relation object
-
-				$objectRelation->load($object->get($relationCode));
-
-				
-				// Store the relation object
-
-				$result[$relationCode] =
-				[
-					'id' => $objectRelation->get('id'),
-					'ext_source' => $objectRelation->get('ext_source'),
-					'ext_id' => $objectRelation->get('ext_id'),
-					'ext_code' => $objectRelation->get('ext_code'),
-					'name' => $objectRelation->get('name'),
-					'url' => $objectRelation->get('url'),
-					'url_avatar' => $objectRelation->get('url_avatar')
-				];
-			}
-			else
-			{
-				// Get all relations of this object
-				//$object->get()
-			}
 		}
 
 
