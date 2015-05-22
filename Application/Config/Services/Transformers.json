@@ -5,5 +5,6 @@
 	"transformer/mysql/query/drop": "\\fbenard\\Material\\Services\\Transformers\\MySql\\DropQueryTransformer",
 	"transformer/mysql/query/insert": "\\fbenard\\Material\\Services\\Transformers\\MySql\\InsertQueryTransformer",
 	"transformer/mysql/query/load": "\\fbenard\\Material\\Services\\Transformers\\MySql\\LoadQueryTransformer",
+	"transformer/mysql/query/replace": "\\fbenard\\Material\\Services\\Transformers\\MySql\\ReplaceQueryTransformer",
 	"transformer/mysql/query/select": "\\fbenard\\Material\\Services\\Transformers\\MySql\\SelectQueryTransformer"
 }

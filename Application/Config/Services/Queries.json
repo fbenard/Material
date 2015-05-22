@@ -3,5 +3,6 @@
 	"query/drop": "\\fbenard\\Material\\Services\\Queries\\DropQuery",
 	"query/insert": "\\fbenard\\Material\\Services\\Queries\\InsertQuery",
 	"query/load": "\\fbenard\\Material\\Services\\Queries\\LoadQuery",
+	"query/replace": "\\fbenard\\Material\\Services\\Queries\\ReplaceQuery",
 	"query/select": "\\fbenard\\Material\\Services\\Queries\\SelectQuery"
 }
