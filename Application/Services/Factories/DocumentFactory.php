@@ -82,7 +82,7 @@ class DocumentFactory
 					$objectRelation->load($object->get($propertyCode));
 
 					
-					//
+					// Export the relation
 
 					$propertyValue = $objectRelation->export(false);
 				}
