@@ -340,6 +340,14 @@ class ObjectManager
 		}
 
 
+		//
+
+		if (array_key_exists('id', $properties) === true)
+		{
+			unset($properties['id']);
+		}
+
+
 		// Build the query
 
 		$query = \z\service('factory/query')
