@@ -79,9 +79,9 @@ class Object
 	 *
 	 */
 
-	public function export()
+	public function export($exportRelations = true)
 	{
-		return \z\service('manager/object')->exportObject($this);
+		return \z\service('manager/object')->exportObject($this, $exportRelations);
 	}
 
 

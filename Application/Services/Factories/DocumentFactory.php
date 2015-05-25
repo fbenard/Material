@@ -84,16 +84,7 @@ class DocumentFactory
 					
 					//
 
-					$propertyValue =
-					[
-						'id' => $objectRelation->get('id'),
-						'ext_source' => $objectRelation->get('ext_source'),
-						'ext_id' => $objectRelation->get('ext_id'),
-						'ext_code' => $objectRelation->get('ext_code'),
-						'name' => $objectRelation->get('name'),
-						'url' => $objectRelation->get('url'),
-						'url_avatar' => $objectRelation->get('url_avatar')
-					];
+					$propertyValue = $objectRelation->export(false);
 				}
 				else if
 				(

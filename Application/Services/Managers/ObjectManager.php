@@ -94,7 +94,7 @@ class ObjectManager
 	 *
 	 */
 
-	public function exportObject(&$object)
+	public function exportObject(&$object, $exportRelations = true)
 	{
 		//
 
@@ -106,13 +106,21 @@ class ObjectManager
 			{
 				foreach ($propertyValue as &$subPropertyValue)
 				{
-					if (is_object($subPropertyValue) === true)
+					if
+					(
+						(is_object($subPropertyValue) === true) &&
+						($exportRelations === true)
+					)
 					{
 						$subPropertyValue = $this->exportObject($subPropertyValue);
 					}
 				}
 			}
-			else if (is_object($propertyValue) === true)
+			else if
+			(
+				(is_object($propertyValue) === true) &&
+				($exportRelations === true)
+			)
 			{
 				$propertyValue = $this->exportObject($propertyValue);
 			}
