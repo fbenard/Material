@@ -19,6 +19,7 @@ class Object
 
 	// Attributes
 
+	private $_id = 'id';
 	private $_modelCode = null;
 	private $_properties = null;
 

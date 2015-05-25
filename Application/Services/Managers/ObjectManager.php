@@ -37,7 +37,7 @@ class ObjectManager
 		\z\service('factory/query')
 		->delete()
 		->from($this->_nameSingular)
-		->where('id', '=', $this->getId())
+		->where($object->id, '=', $object->get($object->id))
 		->execute();
 	}
 
@@ -211,7 +211,7 @@ class ObjectManager
 			$object->modelCode,
 			$object->modelCode,
 			$document,
-			$object->get('id')
+			$object->get($object->id)
 		);
 	}
 
@@ -224,7 +224,7 @@ class ObjectManager
 	{
 		//
 
-		if (empty($object->get('id')) === true)
+		if (empty($object->get($object->id)) === true)
 		{
 			return false;
 		}
@@ -246,7 +246,7 @@ class ObjectManager
 		$inputs = \z\service('factory/query')
 		->select()
 		->from($object->modelCode)
-		->where('id', '=', $objectId)
+		->where($object->id, '=', $object->get($object->id))
 		->execute();
 
 
@@ -350,7 +350,7 @@ class ObjectManager
 		// Update the ID
 
 		$id = $query->connection->driver->getLastId();
-		$object->set('id', $id);
+		$object->set($object->id, $id);
 
 
 		// Dispatch post event
