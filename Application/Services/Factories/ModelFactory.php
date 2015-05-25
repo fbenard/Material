@@ -84,14 +84,19 @@ class ModelFactory
 
 		// Ensure it has the expected structure
 
-		$model = array_merge
+		$model = \z\conf
 		(
+			$model,
 			[
 				'abstract' => null,
 				'extends' => null,
-				'properties' => []
-			],
-			$model
+				'properties' =>
+				[
+					'cardinality' => null,
+					'pivot' => null,
+					'type' => null
+				]
+			]
 		);
 
 
