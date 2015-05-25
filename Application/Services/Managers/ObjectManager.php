@@ -303,13 +303,43 @@ class ObjectManager
 		);
 
 
+		// Get the model
+
+		$model = \z\service('manager/model')->getModel($object->modelCode);
+
+
+		// Select properties that will be saved
+
+		$properties = [];
+
+		foreach ($model['properties'] as $propertyCode => $property)
+		{
+			\z\dlog($property);
+			//
+
+			if
+			(
+				($property['cardinality'] === 'zero_many') ||
+				($property['cardinality'] === 'one_many')
+			)
+			{
+				continue;
+			}
+
+
+			//
+
+			$properties[$propertyCode] = $object->get($propertyValue);
+		}
+
+
 		// Build the query
 
 		$query = \z\service('factory/query')
 		->insert()
 		->into($object->modelCode)
-		->columns(array_keys($object->properties))
-		->values(array_values($object->properties))
+		->columns(array_keys($properties))
+		->values(array_values($properties))
 		->updateOnDuplicate();
 
 
