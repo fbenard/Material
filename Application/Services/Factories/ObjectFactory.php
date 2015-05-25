@@ -22,14 +22,13 @@ class ObjectFactory
 		$model = \z\service('manager/model')->getModel($modelCode);
 
 
-		// Build object properties
-
-		$objectProperties = \z\service('factory/object/property')->buildObjectProperties($model);
-
-
 		// Build the object
 
-		$object = new \fbenard\Material\Classes\Object($modelCode, $objectProperties);
+		$object = new \fbenard\Material\Classes\Object
+		(
+			$modelCode,
+			array_keys($model['properties'])
+		);
 
 
 		return $object;
