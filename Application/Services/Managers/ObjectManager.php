@@ -324,7 +324,7 @@ class ObjectManager
 		{
 			// Skip the object ID
 
-			if ($propertyCode === $object->id === true)
+			if ($propertyCode === $object->id)
 			{
 				continue;
 			}
