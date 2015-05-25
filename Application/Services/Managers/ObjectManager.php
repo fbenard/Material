@@ -322,6 +322,14 @@ class ObjectManager
 
 		foreach ($model['properties'] as $propertyCode => $property)
 		{
+			// Skip the object ID
+
+			if ($propertyCode === $object->id === true)
+			{
+				continue;
+			}
+
+
 			// Skip 0:n cardinalities
 
 			if
@@ -337,14 +345,6 @@ class ObjectManager
 			// Set the property value
 
 			$properties[$propertyCode] = $object->get($propertyCode);
-		}
-
-
-		//
-
-		if (array_key_exists('id', $properties) === true)
-		{
-			unset($properties['id']);
 		}
 
 
