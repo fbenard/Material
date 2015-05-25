@@ -328,7 +328,7 @@ class ObjectManager
 
 			//
 
-			$properties[$propertyCode] = $object->get($propertyValue);
+			$properties[$propertyCode] = $object->get($propertyCode);
 		}
 
 
