@@ -314,7 +314,7 @@ class ObjectManager
 
 		foreach ($model['properties'] as $propertyCode => $property)
 		{
-			//
+			// Skip 0:n cardinalities
 
 			if
 			(
@@ -326,7 +326,7 @@ class ObjectManager
 			}
 
 
-			//
+			// Set the property value
 
 			$properties[$propertyCode] = $object->get($propertyCode);
 		}
