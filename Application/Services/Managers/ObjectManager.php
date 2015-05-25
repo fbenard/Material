@@ -314,7 +314,6 @@ class ObjectManager
 
 		foreach ($model['properties'] as $propertyCode => $property)
 		{
-			\z\dlog($property);
 			//
 
 			if
