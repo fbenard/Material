@@ -4,6 +4,5 @@
 	"factory/index": "\\fbenard\\Material\\Services\\Factories\\IndexFactory",
 	"factory/model": "\\fbenard\\Material\\Services\\Factories\\ModelFactory",
 	"factory/object": "\\fbenard\\Material\\Services\\Factories\\ObjectFactory",
-	"factory/object/property": "\\fbenard\\Material\\Services\\Factories\\ObjectPropertyFactory",
 	"factory/query": "\\fbenard\\Material\\Services\\Factories\\QueryFactory"
 }
