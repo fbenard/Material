@@ -64,7 +64,7 @@ class DocumentFactory
 
 			if (\z\service('helper/object/property')->isRelation($property) === true)
 			{
-				//
+				// Is it a 0:1 or a 0:n relation?
 
 				if
 				(
@@ -92,8 +92,7 @@ class DocumentFactory
 					($property['cardinality'] === 'one_many')
 				)
 				{
-					// Get all relations of this object
-					//$object->get()
+					// Get all relations of this object?
 				}
 			}
 
