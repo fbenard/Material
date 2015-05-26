@@ -39,7 +39,7 @@ class DocumentManager
 
 	public function getDocument($modelCode, $documentId)
 	{
-		//
+		// Get the full document
 
 		$document = \z\service('driver/db/es')->get
 		(
@@ -51,7 +51,7 @@ class DocumentManager
 		);
 
 
-		//
+		// Extract the document
 
 		$result = $document['_source'];
 
@@ -66,7 +66,7 @@ class DocumentManager
 
 	public function indexDocument($indexCode, $indexType, $document, $documentId = null)
 	{
-		// Build the index arguments
+		// Build arguments
 
 		$arguments =
 		[
@@ -76,7 +76,7 @@ class DocumentManager
 		];
 
 
-		// Add the document ID
+		// Add the document ID to arguments
 
 		if (empty($documentId) === false)
 		{
@@ -84,7 +84,7 @@ class DocumentManager
 		}
 
 
-		// Index
+		// Index the document
 
 		\z\service('driver/db/es')->index($arguments);
 	}
