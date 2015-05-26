@@ -15,6 +15,28 @@ class DocumentManager
 	 *
 	 */
 
+	public function deleteDocument($indexCode, $indexType, $documentId)
+	{
+		// Build arguments
+
+		$arguments =
+		[
+			'index' => $indexCode,
+			'type' => $indexType,
+			'id' => $documentId
+		];
+
+
+		// Delete the document
+
+		\z\service('driver/db/es')->delete($arguments);
+	}
+
+
+	/**
+	 *
+	 */
+
 	public function getDocument($modelCode, $documentId)
 	{
 		//
