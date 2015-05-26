@@ -102,6 +102,24 @@ class ModelFactory
 
 		return $model;
 	}
+
+
+	/**
+	 *
+	 */
+
+	public function fixModelCode($modelCode)
+	{
+		//
+
+		if (strpos($modelCode, 'model:') === 0)
+		{
+			$modelCode = str_replace('model:', null, $modelCode);
+		}
+
+
+		return $modelCode;
+	}
 }
 
 ?>
