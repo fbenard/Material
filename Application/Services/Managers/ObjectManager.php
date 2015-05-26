@@ -334,8 +334,8 @@ class ObjectManager
 
 			if
 			(
-				($property['cardinality'] === 'zero_many') ||
-				($property['cardinality'] === 'one_many')
+				($property['cardinality'] === '0_n') ||
+				($property['cardinality'] === '1_n')
 			)
 			{
 				continue;

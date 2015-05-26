@@ -68,8 +68,8 @@ class DocumentFactory
 
 				if
 				(
-					($property['cardinality'] === 'zero_one') ||
-					($property['cardinality'] === 'one_one')
+					($property['cardinality'] === '0_1') ||
+					($property['cardinality'] === '1_1')
 				)
 				{
 					// Build the relation object
@@ -88,8 +88,8 @@ class DocumentFactory
 				}
 				else if
 				(
-					($property['cardinality'] === 'zero_many') ||
-					($property['cardinality'] === 'one_many')
+					($property['cardinality'] === '0_n') ||
+					($property['cardinality'] === '1_n')
 				)
 				{
 					// Get all relations of this object?
