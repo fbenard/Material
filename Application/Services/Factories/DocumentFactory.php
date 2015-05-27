@@ -72,19 +72,24 @@ class DocumentFactory
 					($property['cardinality'] === '1_1')
 				)
 				{
-					// Build the relation object
+					// Fix the model code
 
-					$objectRelation = $this->buildObject($property);
+					$relationModelCode = \z\service('factory/model')->fixModelCode($property['type']);
 
 
-					// Load the relation object
+					// Build the relation
 
-					$objectRelation->load($object->get($propertyCode));
+					$relation = \z\service('factory/object')->buildObject($relationModelCode);
+
+
+					// Load the relation
+
+					$relation->load($propertyValue);
 
 					
 					// Export the relation
 
-					$propertyValue = $objectRelation->export(false);
+					$propertyValue = $relation->export(false);
 				}
 				else if
 				(
@@ -92,7 +97,7 @@ class DocumentFactory
 					($property['cardinality'] === '1_n')
 				)
 				{
-					// Get all relations of this object?
+					$propertyValue = new \stdClass();
 				}
 			}
 
