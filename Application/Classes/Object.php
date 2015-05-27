@@ -41,7 +41,15 @@ class Object
 		// Build attributes
 
 		$this->_modelCode = $modelCode;
-		$this->_properties = array_flip($objectProperties);
+		$this->_properties = [];
+
+
+		// Build attributes
+
+		foreach ($objectProperties as $propertyCode)
+		{
+			$this->_properties[$propertyCode] = null;
+		}
 	}
 
 	
