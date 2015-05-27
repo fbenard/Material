@@ -214,7 +214,8 @@ class ObjectManager
 			$object->modelCode,
 			$object->modelCode,
 			$document,
-			$object->get($object->id)
+			$object->modelCode . ':' . $object->get('ext_source') . ':' . $object->get('ext_id')
+			//$object->get($object->id)
 		);
 	}
 
