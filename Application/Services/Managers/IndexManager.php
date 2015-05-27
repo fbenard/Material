@@ -51,33 +51,6 @@ class IndexManager
 	{
 		\z\service('driver/db/es')->indices()->delete(['index' => '_all']);
 	}
-
-
-	/**
-	 *
-	 */
-
-	public function index()
-	{
-		// List models
-
-		$models = \z\service('manager/model')->listModels();
-
-
-		// Parse each model
-
-		foreach ($models as $modelCode)
-		{
-			// Log
-
-			\z\dlogi('Indexing ' . $modelCode . '...');
-
-
-			// Index the model
-
-			\z\service('manager/model')->indexModel($modelCode);
-		}
-	}
 }
 
 ?>

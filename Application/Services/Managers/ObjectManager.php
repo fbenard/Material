@@ -202,14 +202,9 @@ class ObjectManager
 
 	public function indexObject(&$object)
 	{
-		// Get the model
-
-		$model = \z\service('manager/model')->getModel($object->modelCode);
-
-
 		// Build the document
 
-		$document = \z\service('factory/document')->buildDocument($model, $object);
+		$document = \z\service('factory/document')->buildDocument($object->modelCode, $object);
 
 
 		// Store the document
