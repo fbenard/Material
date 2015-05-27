@@ -23,7 +23,13 @@ extends \fbenard\Zero\Classes\AbstractEvent
 
 	public function __construct($sender, $object)
 	{
+		// Cal the parent constructor
+
 		parent::__construct($sender);
+
+
+		// Store attributes
+
 		$this->_object = $object;
 	}
 }
