@@ -250,7 +250,7 @@ class ObjectManager
 		$inputs = \z\service('factory/query')
 		->select()
 		->from($object->modelCode)
-		->where($object->id, '=', $object->get($object->id))
+		->where($object->id, '=', $objectId)
 		->execute();
 
 
