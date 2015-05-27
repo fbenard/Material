@@ -60,7 +60,7 @@ class DocumentFactory
 			}
 
 
-			// Relations require an additional conversion
+			// Is it a relation?
 
 			if (\z\service('helper/object/property')->isRelation($property) === true)
 			{
