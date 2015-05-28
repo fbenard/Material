@@ -17,9 +17,9 @@ class SearchManager
 
 	public function downloadSearch($searchId)
 	{
-		// Grab search arguments
+		// Get the search
 
-		$arguments = json_decode(\z\cache()->getCache($searchId));
+		$search = json_decode(\z\service('driver/redis')->get($searchId));
 
 
 		// Perform an all-search
@@ -30,7 +30,7 @@ class SearchManager
 				$this,
 				'searchAll'
 			],
-			$arguments
+			$search
 		);
 
 
@@ -239,9 +239,9 @@ class SearchManager
 		$searchId = md5($search);
 
 
-		//
+		// Store the search
 
-		\z\cache()->setCache($searchId, $search);
+		\z\service('driver/redis')->set($searchId, $search);
 
 
 		return $searchId;
