@@ -93,6 +93,7 @@ class ModelFactory
 				'properties' =>
 				[
 					'cardinality' => null,
+					'parent' => null,
 					'pivot' => null,
 					'type' => null
 				]
