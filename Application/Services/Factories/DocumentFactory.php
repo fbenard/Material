@@ -97,7 +97,51 @@ class DocumentFactory
 					($property['cardinality'] === '1_n')
 				)
 				{
-					$propertyValue = new \stdClass();
+					// Decode sub-property values
+
+					$subPropertyValues = json_decode($propertyValue, true);
+
+
+					// Parse each sub-property value
+
+					$relations = [];
+					
+					foreach ($subPropertyValues as $subPropertyValue)
+					{
+						// Fix the model code
+
+						$relationModelCode = \z\service('factory/model')->fixModelCode($property['type']);
+
+
+						// Find the relation
+
+						$relation = \z\service('manager/sync/object')->findObject
+						(
+							$relationModelCode,
+							$subPropertyValue['ext_source'],
+							$subPropertyValue['ext_id']
+						);
+
+
+						// If the relation is loaded, add it to relations
+
+						if ($relation->isLoaded() === true)
+						{
+							$relations[] = $relation->export(false);
+						}
+					}
+
+
+					// Have we found any relation?
+
+					if (empty($relations) === true)
+					{
+						$propertyValue = new \stdClass();	
+					}
+					else
+					{
+						$propertyValue = $relations;
+					}
 				}
 			}
 
