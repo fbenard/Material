@@ -37,7 +37,7 @@ composer update
 
 ## Authors
 
-Material is carefully taken care of by [Fabien BÉNARD](http://fabienbenard.com).
+Material is carefully taken care of by [Fabien BÉNARD](http://fabien.benard.co).
 
 
 ## License
