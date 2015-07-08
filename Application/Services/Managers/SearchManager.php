@@ -57,11 +57,11 @@ class SearchManager
 		header('Content-Disposition: attachment; filename="' . stripslashes($filename) . '"');
 		header('Pragma: public');
 		header('Expires: -1');
-		header('Cache-Control: public, must-revalidate, post-check=0, pre-check=0'); 
+		header('Cache-Control: public, must-revalidate, post-check=0, pre-check=0');
 		header('Cache-Control: private', false);
 
 		print $csv;
-		die();		
+		die();
 	}
 
 
@@ -75,7 +75,7 @@ class SearchManager
 
 		$searchId = $this->storeSearch(func_get_args());
 
-		
+
 		// http://www.elastic.co/guide/en/elasticsearch/client/php-api/current/_search_operations.html
 		// http://www.elastic.co/guide/en/elasticsearch/reference/1.x/query-dsl-query-string-query.html
 
@@ -114,7 +114,7 @@ class SearchManager
 			'size' => $pageSize
 		];
 
-		
+
 		// Perform the search
 
 		$output = \z\service('driver/db/es')->search($input);
@@ -153,7 +153,7 @@ class SearchManager
 	 *
 	 */
 
-	private function searchAll($modelCode, $query = null, $filters = null, $order = null, $group = null)
+	public function searchAll($modelCode, $query = null, $filters = null, $order = null, $group = null)
 	{
 		// Disable time/memory limit
 
@@ -174,7 +174,7 @@ class SearchManager
 
 		// Search all results
 
-		$page = 0;		
+		$page = 0;
 
 		do
 		{
