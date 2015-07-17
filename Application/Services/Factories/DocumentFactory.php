@@ -106,28 +106,31 @@ class DocumentFactory
 
 					$relations = [];
 					
-					foreach ($subPropertyValues as $subPropertyValue)
+					if (is_array($subPropertyValues) === true)
 					{
-						// Fix the model code
-
-						$relationModelCode = \z\service('factory/model')->fixModelCode($property['type']);
-
-
-						// Find the relation
-
-						$relation = \z\service('manager/sync/object')->findObject
-						(
-							$relationModelCode,
-							$subPropertyValue['ext_source'],
-							$subPropertyValue['ext_id']
-						);
-
-
-						// If the relation is loaded, add it to relations
-
-						if ($relation->isLoaded() === true)
+						foreach ($subPropertyValues as $subPropertyValue)
 						{
-							$relations[] = $relation->export(false);
+							// Fix the model code
+
+							$relationModelCode = \z\service('factory/model')->fixModelCode($property['type']);
+
+
+							// Find the relation
+
+							$relation = \z\service('manager/sync/object')->findObject
+							(
+								$relationModelCode,
+								$subPropertyValue['ext_source'],
+								$subPropertyValue['ext_id']
+							);
+
+
+							// If the relation is loaded, add it to relations
+
+							if ($relation->isLoaded() === true)
+							{
+								$relations[] = $relation->export(false);
+							}
 						}
 					}
 
