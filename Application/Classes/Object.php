@@ -157,9 +157,9 @@ class Object
 	 *
 	 */
 
-	public function save()
+	public function save($properties = null)
 	{
-		return \z\service('manager/object')->saveObject($this);
+		return \z\service('manager/object')->saveObject($this, $properties);
 	}
 
 

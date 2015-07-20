@@ -296,14 +296,14 @@ class ObjectManager
 	 *
 	 */
 
-	public function saveObject(&$object)
+	public function saveObject(&$object, $properties = null)
 	{
 		// Dispatch pre event
 
 		\z\dispatch
 		(
 			EVENT_OBJECT_SAVE_PRE,
-			new \fbenard\Material\Events\ObjectSaveEvent($this, $object)
+			new \fbenard\Material\Events\ObjectSaveEvent($this, $object, $properties)
 		);
 
 
@@ -312,9 +312,19 @@ class ObjectManager
 		$model = \z\service('manager/model')->getModel($object->modelCode);
 
 
+		// Build initial properties
+
+		$initialProperties = array_keys($model['properties']);
+
+		if (is_array($properties) === true)
+		{
+			$initialProperties = $properties;
+		}
+
+
 		// Select properties that will be saved
 
-		$properties = [];
+		$finalProperties = [];
 
 		foreach ($model['properties'] as $propertyCode => $property)
 		{
@@ -340,7 +350,7 @@ class ObjectManager
 
 			// Set the property value
 
-			$properties[$propertyCode] = $object->get($propertyCode);
+			$finalProperties[$propertyCode] = $object->get($propertyCode);
 		}
 
 
@@ -349,8 +359,8 @@ class ObjectManager
 		$query = \z\service('factory/query')
 		->insert()
 		->into($object->modelCode)
-		->columns(array_keys($properties))
-		->values(array_values($properties))
+		->columns(array_keys($finalProperties))
+		->values(array_values($finalProperties))
 		->updateOnDuplicate();
 
 
@@ -370,7 +380,7 @@ class ObjectManager
 		\z\dispatch
 		(
 			EVENT_OBJECT_SAVE_POST,
-			new \fbenard\Material\Events\ObjectSaveEvent($this, $object)
+			new \fbenard\Material\Events\ObjectSaveEvent($this, $object, $properties)
 		);
 	}
 

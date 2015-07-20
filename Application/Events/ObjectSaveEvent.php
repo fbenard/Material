@@ -15,13 +15,14 @@ extends \fbenard\Zero\Classes\AbstractEvent
 	// Attributes
 
 	protected $_object = null;
+	protected $_properties = null;
 
 
 	/**
 	 *
 	 */
 
-	public function __construct($sender, $object)
+	public function __construct($sender, $object, $properties = null)
 	{
 		// Cal the parent constructor
 
@@ -31,6 +32,7 @@ extends \fbenard\Zero\Classes\AbstractEvent
 		// Store attributes
 
 		$this->_object = $object;
+		$this->_properties = $properties;
 	}
 }
 
