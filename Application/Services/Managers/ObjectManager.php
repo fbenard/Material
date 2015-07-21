@@ -328,6 +328,14 @@ class ObjectManager
 
 		foreach ($model['properties'] as $propertyCode => $property)
 		{
+			// Skip the property if not an initial one
+
+			if (in_array($propertyCode, $initialProperties) === false)
+			{
+				continue;
+			}
+
+
 			// Skip the object ID
 
 			if ($propertyCode === $object->id)
