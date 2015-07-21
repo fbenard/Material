@@ -107,6 +107,16 @@ class Object
 	 *
 	 */
 
+	public function getId()
+	{
+		return $this->get($this->_id);
+	}
+
+
+	/**
+	 *
+	 */
+
 	public function import($input)
 	{
 		return \z\service('manager/object')->importObject($this, $input);
