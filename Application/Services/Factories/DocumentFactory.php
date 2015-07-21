@@ -110,22 +110,19 @@ class DocumentFactory
 					{
 						foreach ($subPropertyValues as $subPropertyValue)
 						{
-							// Find the relation
+							// Build the relation
 
-							$relation = \z\service('manager/sync/object')->findObject
-							(
-								$relationModelCode,
-								$subPropertyValue['ext_source'],
-								$subPropertyValue['ext_id']
-							);
+							$relation = \z\service('factory/object')->buildObject($relationModelCode);
 
 
-							// If the relation is loaded, add it to relations
+							// Load the relation
 
-							if ($relation->isLoaded() === true)
-							{
-								$relations[] = $relation->export(false);
-							}
+							$relation->load($subPropertyValue);
+
+
+							// Export the relation
+
+							$relations[] = $relation->export(false);
 						}
 					}
 
