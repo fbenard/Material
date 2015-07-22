@@ -362,6 +362,14 @@ class ObjectManager
 		}
 
 
+		// No need to save if no final properties
+
+		if (empty($finalProperties) === true)
+		{
+			return;
+		}
+
+
 		// Build the query
 
 		$query = \z\service('factory/query')
