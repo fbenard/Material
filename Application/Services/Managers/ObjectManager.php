@@ -379,8 +379,11 @@ class ObjectManager
 
 		// Update the ID
 
-		$id = $query->connection->driver->getLastId();
-		$object->set($object->id, $id);
+		if ($object->isLoaded() === false)
+		{			
+			$id = $query->connection->driver->getLastId();
+			$object->set($object->id, $id);
+		}
 
 
 		// Dispatch post event
