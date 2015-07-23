@@ -89,7 +89,7 @@ class ModelManager
 	{
 		// List paths to models
 
-		$paths = \z\service('helper/file')->listFiles(PATH_APPLICATION . 'Config/Models/', '*.json');
+		$paths = \z\service('helper/file')->listFiles(PATH_APPLICATION . '/Config/Models', 'json');
 
 
 		// Parse each path

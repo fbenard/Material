@@ -19,7 +19,7 @@ class ModelFactory
 	{
 		// Check whether the model exists
 
-		$pathToModel = PATH_APPLICATION . 'Config/Models/' . $modelCode . '.json';
+		$pathToModel = PATH_APPLICATION . '/Config/Models/' . $modelCode . '.json';
 
 		if (file_exists($pathToModel) === false)
 		{
