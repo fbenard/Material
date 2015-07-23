@@ -87,9 +87,14 @@ class ModelManager
 
 	public function listModels()
 	{
+		// Define path to models
+
+		$pathToModels = PATH_APPLICATION . '/Config/Models';
+
+
 		// List paths to models
 
-		$paths = \z\service('helper/file')->listFiles(PATH_APPLICATION . '/Config/Models', 'json');
+		$paths = \z\service('helper/file')->listFiles($pathToModels, 'json', true);
 
 
 		// Parse each path
@@ -100,7 +105,15 @@ class ModelManager
 		{
 			// Extract the model code
 
-			$modelCode = basename($path, '.json');
+			$modelCode = str_replace
+			(
+				[
+					$pathToModels,
+					'.json'
+				],
+				null,
+				$path
+			);
 
 
 			// Get the model
