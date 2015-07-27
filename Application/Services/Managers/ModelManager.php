@@ -85,16 +85,17 @@ class ModelManager
 	 *
 	 */
 
-	public function listModels()
+	public function listModels($namespace = null)
 	{
-		// Define path to models
+		// Define paths
 
 		$pathToModels = PATH_APPLICATION . '/Config/Models';
+		$pathToNamespace = $pathToModels . '/' . $namespace;
 
 
-		// List paths to models
+		// List models in namespace
 
-		$paths = \z\service('helper/file')->listFiles($pathToModels, 'json', true);
+		$paths = \z\service('helper/file')->listFiles($pathToNamespace, 'json', true);
 
 
 		// Parse each path
@@ -114,6 +115,8 @@ class ModelManager
 				null,
 				$path
 			);
+
+			$modelCode = ltrim($modelCode, '/');
 
 
 			// Get the model
