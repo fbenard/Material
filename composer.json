@@ -22,7 +22,7 @@
 	},
 	"require":
 	{
- 		"elasticsearch/elasticsearch": "~1.0",
+ 		"elasticsearch/elasticsearch": "v1.0",
 		"fbenard/zero": "dev-develop",
 		"php": ">=5.5.0"
 	},
