@@ -12,8 +12,6 @@ Material is an ORM written in PHP, for PHP applications. It has been designed to
 - Localized properties
 - A migration and seeding mechanism
 
-![Build status](https://circleci.com/gh/fbenard/material/tree/master.svg?style=shield&circle-token=f5b255ed7a134e386373a77c9781633083c9c1a3)
-
 
 ## Install
 
