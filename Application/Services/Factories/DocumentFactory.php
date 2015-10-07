@@ -64,11 +64,6 @@ class DocumentFactory
 
 			if (\z\service('helper/object/property')->isRelation($property) === true)
 			{
-				// Fix the model code
-
-				$relationModelCode = \z\service('factory/model')->fixModelCode($property['type']);
-
-
 				// Is it a 0:1 or a 0:n relation?
 
 				if
@@ -79,7 +74,7 @@ class DocumentFactory
 				{
 					// Build the relation
 
-					$relation = \z\service('factory/object')->buildObject($relationModelCode);
+					$relation = \z\service('factory/object')->buildObject($property['model']);
 
 
 					// Load the relation
@@ -112,7 +107,7 @@ class DocumentFactory
 						{
 							// Build the relation
 
-							$relation = \z\service('factory/object')->buildObject($relationModelCode);
+							$relation = \z\service('factory/object')->buildObject($property['model']);
 
 
 							// Load the relation

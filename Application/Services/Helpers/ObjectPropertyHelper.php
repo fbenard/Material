@@ -38,7 +38,7 @@ class ObjectPropertyHelper
 
 	public function isRelation($property)
 	{
-		if (strpos($property['type'], 'model:') === 0)
+		if (empty($property['model']) === false)
 		{
 			return true;
 		}
