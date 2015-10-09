@@ -39,7 +39,7 @@ class ConnectionManager
 	{
 		// Grab definitions
 
-		$definitions = \z\pref('connections');
+		$definitions = \z\pref('db/connections');
 
 		if (is_array($definitions) === false)
 		{
