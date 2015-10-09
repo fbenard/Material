@@ -32,7 +32,7 @@ class IndexHelper
 		
 		// Get alias for the model
 
-		$alias = \z\pref('fbenard/material/search/' . $modelCode . '/alias');
+		$alias = \z\pref('search/' . $modelCode . '/alias');
 
 		if (is_array($alias) === true)
 		{
@@ -74,7 +74,7 @@ class IndexHelper
 		{
 			// Get order for the model
 
-			$order = \z\pref('fbenard/material/search/' . $modelCode . '/order');
+			$order = \z\pref('search/' . $modelCode . '/order');
 
 			if (is_array($order) === false)
 			{

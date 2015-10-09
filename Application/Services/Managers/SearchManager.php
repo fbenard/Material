@@ -89,7 +89,7 @@ class SearchManager
 
 		if ($pageSize <= 0)
 		{
-			$pageSize = \z\pref('fbenard/material/page/size');
+			$pageSize = \z\pref('page/size');
 		}
 
 

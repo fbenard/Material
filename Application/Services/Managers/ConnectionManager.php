@@ -39,7 +39,7 @@ class ConnectionManager
 	{
 		// Grab definitions
 
-		$definitions = \z\pref('fbenard/material/db/connections');
+		$definitions = \z\pref('connections');
 
 		if (is_array($definitions) === false)
 		{
