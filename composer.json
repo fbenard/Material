@@ -20,10 +20,14 @@
 		"issues": "http://github.com/fbenard/material/issues",
 		"source": "http://github.com/fbenard/material"
 	},
+	"config":
+	{
+		"vendor-dir": "Components"
+	},
 	"require":
 	{
  		"elasticsearch/elasticsearch": "v1.0",
-		"fbenard/zero": "dev-develop",
+		"fbenard/zero": "dev-master",
 		"php": ">=5.5.0"
 	},
 	"autoload":

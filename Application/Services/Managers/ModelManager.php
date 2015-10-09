@@ -152,7 +152,7 @@ class ModelManager
 
 		if (empty($pageSize) === true)
 		{
-			$pageSize = \z\pref('fbenard/material/page/size');
+			$pageSize = \z\pref('page/size');
 		}
 
 
