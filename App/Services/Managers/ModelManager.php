@@ -89,7 +89,7 @@ class ModelManager
 	{
 		// Define paths
 
-		$pathToModels = PATH_APPLICATION . '/Config/Models';
+		$pathToModels = PATH_APP . '/Config/Models';
 		$pathToNamespace = $pathToModels . '/' . $namespace;
 
 
