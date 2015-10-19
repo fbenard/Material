@@ -34,7 +34,7 @@
 	{
 		"psr-4":
 		{
-			"fbenard\\Material\\": "Application/"
+			"fbenard\\Material\\": "App/"
 		}
 	}
 }
