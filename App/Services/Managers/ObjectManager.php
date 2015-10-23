@@ -96,12 +96,40 @@ class ObjectManager
 
 	public function exportObject(&$object, $exportRelations = true)
 	{
-		//
+		// Get the model
+
+		$model = \z\service('manager/model')->getModel($object->modelCode);
+
+
+		// Build the result
 
 		$result = [];
 
-		foreach ($object->properties as $propertyCode => $propertyValue)
+		
+		// Parse each property
+
+		foreach ($model['properties'] as $propertyCode => $property)
 		{
+			// Skip relations if not exported
+
+			if
+			(
+				($exportRelations === false) &&
+				(\z\service('helper/object/property')->isRelation($property) === true)
+			)
+			{
+				continue;
+			}
+
+
+			// Get the property value
+
+			$propertyValue = $object->get($propertyCode);
+
+
+			// Is the property an array?
+			// Or is it an object?
+
 			if (is_array($propertyValue) === true)
 			{
 				foreach ($propertyValue as &$subPropertyValue)
@@ -126,7 +154,7 @@ class ObjectManager
 			}
 
 
-			//
+			// Store the property
 
 			$result[$propertyCode] = $propertyValue;
 		}
