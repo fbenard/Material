@@ -19,7 +19,7 @@ class ObjectPropertyHelper
 	{
 		if
 		(
-			(isset($property['localized']) === true) &&
+			(array_key_exists('localized', $property) === true) &&
 			($property['localized'] === true)
 		)
 		{
