@@ -372,13 +372,9 @@ class ObjectManager
 			}
 
 
-			// Skip 0:n cardinalities
+			// Skip 0:n relations
 
-			if
-			(
-				($property['cardinality'] === '0_n') ||
-				($property['cardinality'] === '1_n')
-			)
+			if (\z\service('helper/object/property')->is0NRelation($property) === true)
 			{
 				continue;
 			}

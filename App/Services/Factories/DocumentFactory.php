@@ -66,11 +66,7 @@ class DocumentFactory
 			{
 				// Is it a 0:1 or a 0:n relation?
 
-				if
-				(
-					($property['cardinality'] === '0_1') ||
-					($property['cardinality'] === '1_1')
-				)
+				if (\z\service('helper/object/property')->is01Relation($property) === true)
 				{
 					// Build the relation
 
@@ -86,11 +82,7 @@ class DocumentFactory
 
 					$propertyValue = $relation->export(false);
 				}
-				else if
-				(
-					($property['cardinality'] === '0_n') ||
-					($property['cardinality'] === '1_n')
-				)
+				else if (\z\service('helper/object/property')->is0NRelation($property) === true)
 				{
 					// Decode sub-property values
 
