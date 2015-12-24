@@ -38,7 +38,11 @@ class ObjectPropertyHelper
 
 	public function isRelation($property)
 	{
-		if (empty($property['model']) === false)
+		if
+		(
+			(array_key_exists('model', $property) === true) &&
+			(empty($property['model']) === false)
+		)
 		{
 			return true;
 		}
