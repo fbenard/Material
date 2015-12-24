@@ -32,7 +32,7 @@ class IndexHelper
 		
 		// Get alias for the model
 
-		$alias = \z\pref('search/' . $modelCode . '/alias');
+		$alias = \z\pref('search/' . $modelCode)['alias'];
 
 		if (is_array($alias) === true)
 		{
