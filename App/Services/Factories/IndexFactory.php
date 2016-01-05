@@ -38,6 +38,10 @@ class IndexFactory
 					[
 						'properties' => $mapping
 					]
+				],
+				'settings' =>
+				[
+					'number_of_replicas' => 0
 				]
 			]
 		];
